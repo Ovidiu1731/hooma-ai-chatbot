@@ -89,10 +89,30 @@
             const bubble = document.createElement('button');
             bubble.className = `hooma-chat-bubble ${this.config.position}`;
             bubble.setAttribute('aria-label', 'Open chat with Hooma AI Assistant');
-            bubble.innerHTML = `
-                <img src="${this.config.apiEndpoint}/static/images/hooma-logo.png" alt="Hooma" style="width: 28px; height: 28px; border-radius: 50%; object-fit: cover;" onerror="this.outerHTML='<svg class=&quot;hooma-bubble-icon&quot; viewBox=&quot;0 0 24 24&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><path d=&quot;M12 2C6.48 2 2 6.48 2 12c0 1.54.36 3.04 1.05 4.36L2 22l5.64-1.05C9.96 21.64 11.46 22 13 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.4 0-2.76-.35-4-.99L7 19l.99-1c-.64-1.24-.99-2.6-.99-4 0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8z&quot;/><circle cx=&quot;9&quot; cy=&quot;12&quot; r=&quot;1&quot;/><circle cx=&quot;15&quot; cy=&quot;12&quot; r=&quot;1&quot;/><circle cx=&quot;12&quot; cy=&quot;12&quot; r=&quot;1&quot;/></svg>';">
-            `;
             
+            // Try to load logo, fallback to SVG icon
+            const logoImg = document.createElement('img');
+            logoImg.src = `${this.config.apiEndpoint}/static/images/hooma-logo.png`;
+            logoImg.alt = 'Hooma';
+            logoImg.style.cssText = 'width: 28px; height: 28px; border-radius: 50%; object-fit: cover;';
+            
+            logoImg.onerror = () => {
+                // Fallback to SVG icon
+                bubble.innerHTML = `
+                    <svg class="hooma-bubble-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 24px; height: 24px; fill: white;">
+                        <path d="M12 2C6.48 2 2 6.48 2 12c0 1.54.36 3.04 1.05 4.36L2 22l5.64-1.05C9.96 21.64 11.46 22 13 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.4 0-2.76-.35-4-.99L7 19l.99-1c-.64-1.24-.99-2.6-.99-4 0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8z"/>
+                        <circle cx="9" cy="12" r="1"/>
+                        <circle cx="15" cy="12" r="1"/>
+                        <circle cx="12" cy="12" r="1"/>
+                    </svg>
+                `;
+            };
+            
+            logoImg.onload = () => {
+                console.log('✅ Logo loaded successfully');
+            };
+            
+            bubble.appendChild(logoImg);
             this.bubble = bubble;
             document.body.appendChild(bubble);
         }
@@ -335,13 +355,28 @@
             const messageDiv = document.createElement('div');
             messageDiv.className = `hooma-message ${role}`;
             
-            const avatar = role === 'user' ? 'U' : `<img src="${this.config.apiEndpoint}/static/images/hooma-logo.png" alt="Hooma" onerror="this.style.display='none'; this.parentNode.innerHTML='H';">`;
-            const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            const avatarDiv = document.createElement('div');
+            avatarDiv.className = 'hooma-message-avatar';
             
-            messageDiv.innerHTML = `
-                <div class="hooma-message-avatar">${avatar}</div>
-                <div class="hooma-message-content">${this.escapeHtml(content)}</div>
-            `;
+            if (role === 'user') {
+                avatarDiv.textContent = 'U';
+            } else {
+                // Try to load logo for assistant
+                const logoImg = document.createElement('img');
+                logoImg.src = `${this.config.apiEndpoint}/static/images/hooma-logo.png`;
+                logoImg.alt = 'Hooma';
+                logoImg.onerror = () => {
+                    avatarDiv.textContent = 'H';
+                };
+                avatarDiv.appendChild(logoImg);
+            }
+            
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'hooma-message-content';
+            contentDiv.innerHTML = this.escapeHtml(content);
+            
+            messageDiv.appendChild(avatarDiv);
+            messageDiv.appendChild(contentDiv);
             
             this.messagesContainer.appendChild(messageDiv);
             this.scrollToBottom();

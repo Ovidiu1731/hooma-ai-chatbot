@@ -74,8 +74,10 @@
 }
 
 .hooma-chat-bubble.bottom-right {
-    bottom: 20px;
-    right: 20px;
+    bottom: 20px !important;
+    right: 20px !important;
+    left: auto !important;
+    top: auto !important;
 }
 
 .hooma-chat-bubble.bottom-left {
