@@ -593,40 +593,4 @@
     }
 }
 
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-    .hooma-chat-window {
-        background: #1f2937;
-        color: #f9fafb;
-    }
-    
-    .hooma-chat-messages {
-        background: #111827;
-    }
-    
-    .hooma-message.assistant .hooma-message-content {
-        background: #374151;
-        color: #f9fafb;
-    }
-    
-    .hooma-chat-input {
-        background: #1f2937;
-        border-top-color: #374151;
-    }
-    
-    .hooma-input-field {
-        background: #374151;
-        border-color: #4b5563;
-        color: #f9fafb;
-    }
-    
-    .hooma-input-field::placeholder {
-        color: #9ca3af;
-    }
-    
-    .hooma-powered-by {
-        background: #111827;
-        border-top-color: #374151;
-        color: #9ca3af;
-    }
-}
+/* Dark mode removed - using consistent dark theme */
