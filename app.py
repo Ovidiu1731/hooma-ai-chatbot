@@ -399,6 +399,15 @@ async def get_widget_js(v: str = None):
         }
     )
 
+@app.get("/static/images/hooma-logo.png")
+async def get_logo():
+    """Serve the Hooma logo"""
+    return FileResponse(
+        path=Path(__file__).parent / "static" / "images" / "hooma-logo.png",
+        media_type="image/png",
+        headers={"Cache-Control": "public, max-age=3600"}
+    )
+
 @app.get("/embed/widget.css")
 async def get_widget_css(v: str = None):
     """Serve the widget CSS file with cache-busting"""
