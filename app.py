@@ -387,20 +387,28 @@ async def chat(request: Request, chat_request: ChatRequest, background_tasks: Ba
 
 @app.get("/embed/widget.js")
 async def get_widget_js():
-    """Serve the widget JavaScript file"""
+    """Serve the widget JavaScript file with cache-busting"""
     return FileResponse(
         path=Path(__file__).parent / "static" / "widget.js",
         media_type="application/javascript",
-        headers={"Cache-Control": "public, max-age=3600"}
+        headers={
+            "Cache-Control": "no-cache, no-store, must-revalidate",
+            "Pragma": "no-cache",
+            "Expires": "0"
+        }
     )
 
 @app.get("/embed/widget.css")
 async def get_widget_css():
-    """Serve the widget CSS file"""
+    """Serve the widget CSS file with cache-busting"""
     return FileResponse(
         path=Path(__file__).parent / "static" / "widget.css",
         media_type="text/css",
-        headers={"Cache-Control": "public, max-age=3600"}
+        headers={
+            "Cache-Control": "no-cache, no-store, must-revalidate",
+            "Pragma": "no-cache",
+            "Expires": "0"
+        }
     )
 
 @app.get("/test", response_class=HTMLResponse)
@@ -453,6 +461,69 @@ async def simple_test():
     </body>
     </html>
     """
+
+@app.get("/embed/standalone.html", response_class=HTMLResponse)
+async def standalone_widget(request: Request):
+    """Self-contained widget for testing - includes all CSS/JS inline"""
+    base_url = f"{request.url.scheme}://{request.url.netloc}"
+    
+    # Read the CSS and JS files
+    css_path = Path(__file__).parent / "static" / "widget.css"
+    js_path = Path(__file__).parent / "static" / "widget.js"
+    
+    css_content = css_path.read_text()
+    js_content = js_path.read_text()
+    
+    html_content = f"""
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hooma Chatbot - Standalone Test</title>
+        <style>
+        {css_content}
+        body {{ font-family: Arial, sans-serif; margin: 0; padding: 40px; background: #000; color: white; }}
+        .debug-info {{ position: fixed; top: 10px; left: 10px; background: rgba(0,0,0,0.8); padding: 10px; border-radius: 5px; font-size: 12px; z-index: 10000; }}
+        </style>
+    </head>
+    <body>
+        <div class="debug-info">
+            ✅ Standalone Widget Test<br>
+            🎯 CSS & JS loaded inline<br>
+            🔗 API: {base_url}
+        </div>
+        
+        <h1>Hooma AI Chatbot - Standalone Test</h1>
+        <p>This version has all CSS/JS embedded inline to avoid caching issues.</p>
+        <p>Look for the pink chat bubble in the bottom-right corner.</p>
+        
+        <script>
+        {js_content}
+        
+        // Initialize immediately
+        document.addEventListener('DOMContentLoaded', function() {{
+            console.log('🚀 Standalone widget initializing...');
+            if (window.HoomaChatbot) {{
+                HoomaChatbot.init({{
+                    apiEndpoint: '{base_url}',
+                    primaryColor: '#ff5da2',
+                    secondaryColor: '#e91e63',
+                    position: 'bottom-right',
+                    title: 'Hooma AI Assistant',
+                    subtitle: 'AI Business Solutions',
+                    welcomeMessage: 'Hi! I can help you learn about our AI business solutions and growth systems. What would you like to know?'
+                }});
+                console.log('✅ Standalone widget initialized successfully!');
+            }} else {{
+                console.error('❌ HoomaChatbot not found in standalone mode');
+            }}
+        }});
+        </script>
+    </body>
+    </html>
+    """
+    return html_content
 
 @app.get("/embed/demo.html", response_class=HTMLResponse)
 async def embed_demo(request: Request):
