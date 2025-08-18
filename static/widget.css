@@ -31,22 +31,25 @@
 
 /* Chat bubble launcher - Hooma Brand Style */
 .hooma-chat-bubble {
-    position: fixed;
+    position: fixed !important;
     width: 56px;
     height: 56px;
     background: linear-gradient(135deg, var(--hooma-black) 0%, var(--hooma-pink) 100%);
     border-radius: 50%;
     cursor: pointer;
-    display: flex;
+    display: flex !important;
     align-items: center;
     justify-content: center;
     box-shadow: 0 4px 16px rgba(255, 0, 128, 0.25);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 9999;
+    z-index: 99999 !important;
     border: none;
     outline: none;
     animation: hooma-pulse-subtle 4s ease-in-out infinite;
-    position: relative;
+    bottom: 20px !important;
+    right: 20px !important;
+    left: auto !important;
+    top: auto !important;
 }
 
 /* Pink active dot for chat bubble */

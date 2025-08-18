@@ -97,6 +97,7 @@
             logoImg.style.cssText = 'width: 28px; height: 28px; border-radius: 50%; object-fit: cover;';
             
             logoImg.onerror = () => {
+                console.error('❌ Logo failed to load, using fallback');
                 // Fallback to SVG icon
                 bubble.innerHTML = `
                     <svg class="hooma-bubble-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 24px; height: 24px; fill: white;">
@@ -115,6 +116,14 @@
             bubble.appendChild(logoImg);
             this.bubble = bubble;
             document.body.appendChild(bubble);
+            
+            // Debug positioning
+            console.log('🎯 Chat bubble created with position:', this.config.position);
+            console.log('🎯 Chat bubble classes:', bubble.className);
+            setTimeout(() => {
+                const rect = bubble.getBoundingClientRect();
+                console.log('🎯 Chat bubble position:', { bottom: rect.bottom, right: window.innerWidth - rect.right, left: rect.left, top: rect.top });
+            }, 100);
         }
 
         createChatWindow() {
@@ -366,7 +375,11 @@
                 logoImg.src = `${this.config.apiEndpoint}/static/images/hooma-logo.png`;
                 logoImg.alt = 'Hooma';
                 logoImg.onerror = () => {
+                    console.error('❌ Avatar logo failed to load, using H');
                     avatarDiv.textContent = 'H';
+                };
+                logoImg.onload = () => {
+                    console.log('✅ Avatar logo loaded successfully');
                 };
                 avatarDiv.appendChild(logoImg);
             }
