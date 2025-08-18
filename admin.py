@@ -15,8 +15,7 @@ from fastapi.security import HTTPBasic, HTTPBasicCredentials
 from fastapi.templating import Jinja2Templates
 import secrets
 
-# Import from main app
-from app import sessions, config
+# Import sessions and config will be done dynamically to avoid circular imports
 
 # Admin configuration
 ADMIN_USERNAME = os.getenv("ADMIN_USERNAME", "admin")
@@ -329,4 +328,12 @@ def generate_conversations_html(conversations: List[Dict[str, Any]]) -> str:
 # Export function to integrate with main app
 def setup_admin(app: FastAPI):
     """Setup admin routes in the main FastAPI app"""
+    # Import here to avoid circular imports
+    import importlib
+    main_module = importlib.import_module('app')
+    
+    global sessions, config
+    sessions = main_module.sessions
+    config = main_module.config
+    
     create_admin_routes(app)
