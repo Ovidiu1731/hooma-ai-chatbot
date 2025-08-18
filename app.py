@@ -431,13 +431,16 @@ async def embed_demo():
             
             <div class="code-block">
 &lt;!-- Hooma AI Chatbot --&gt;<br>
-&lt;link rel="stylesheet" href="https://your-railway-domain.railway.app/embed/widget.css"&gt;<br>
-&lt;script src="https://your-railway-domain.railway.app/embed/widget.js"&gt;&lt;/script&gt;<br>
+&lt;link rel="stylesheet" href="{request.url.scheme}://{request.url.netloc}/embed/widget.css"&gt;<br>
+&lt;script src="{request.url.scheme}://{request.url.netloc}/embed/widget.js"&gt;&lt;/script&gt;<br>
 &lt;script&gt;<br>
 &nbsp;&nbsp;HoomaChatbot.init({{<br>
-&nbsp;&nbsp;&nbsp;&nbsp;apiEndpoint: 'https://your-railway-domain.railway.app',<br>
-&nbsp;&nbsp;&nbsp;&nbsp;primaryColor: '{config.WIDGET_PRIMARY_COLOR}',<br>
-&nbsp;&nbsp;&nbsp;&nbsp;position: '{config.WIDGET_POSITION}'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;apiEndpoint: '{request.url.scheme}://{request.url.netloc}',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;primaryColor: '#ff0080',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;secondaryColor: '#e91e63',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;position: 'bottom-right',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title: 'Hooma AI Assistant',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;subtitle: 'Online • AI Business Solutions'<br>
 &nbsp;&nbsp;}});<br>
 &lt;/script&gt;
             </div>
@@ -454,16 +457,26 @@ async def embed_demo():
             <p>Try the chatbot widget in the bottom-right corner of this page!</p>
         </div>
         
+        <link rel="stylesheet" href="/embed/widget.css">
         <script src="/embed/widget.js"></script>
         <script>
-            HoomaChatbot.init({{
-                apiEndpoint: window.location.origin,
-                primaryColor: '#ff0080',
-                secondaryColor: '#e91e63',
-                position: 'bottom-right',
-                title: 'Hooma AI Assistant',
-                subtitle: 'Online • AI Business Solutions',
-                welcomeMessage: 'Welcome to Hooma! I\'m your AI assistant, ready to help you discover how our AI-powered growth systems can transform your business. What would you like to know?'
+            // Wait for DOM to be ready
+            document.addEventListener('DOMContentLoaded', function() {{
+                console.log('Initializing Hooma Chatbot...');
+                if (window.HoomaChatbot) {{
+                    HoomaChatbot.init({{
+                        apiEndpoint: window.location.origin,
+                        primaryColor: '#ff0080',
+                        secondaryColor: '#e91e63',
+                        position: 'bottom-right',
+                        title: 'Hooma AI Assistant',
+                        subtitle: 'Online • AI Business Solutions',
+                        welcomeMessage: 'Welcome to Hooma! I\'m your AI assistant, ready to help you discover how our AI-powered growth systems can transform your business. What would you like to know?'
+                    }});
+                    console.log('Hooma Chatbot initialized successfully!');
+                }} else {{
+                    console.error('HoomaChatbot not found. Check if widget.js loaded properly.');
+                }}
             }});
         </script>
     </body>

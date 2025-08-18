@@ -32,6 +32,8 @@
         }
 
         init(options = {}) {
+            console.log('HoomaChatbot.init called with options:', options);
+            
             if (this.isInitialized) {
                 console.warn('Hooma Chatbot already initialized');
                 return;
@@ -41,6 +43,9 @@
             this.config = { ...this.config, ...options };
             this.apiEndpoint = options.apiEndpoint || '';
 
+            console.log('Final config:', this.config);
+            console.log('API Endpoint:', this.apiEndpoint);
+
             if (!this.apiEndpoint) {
                 console.error('Hooma Chatbot: apiEndpoint is required');
                 return;
@@ -48,8 +53,10 @@
 
             // Wait for DOM to be ready
             if (document.readyState === 'loading') {
+                console.log('DOM still loading, waiting...');
                 document.addEventListener('DOMContentLoaded', () => this.createWidget());
             } else {
+                console.log('DOM ready, creating widget...');
                 this.createWidget();
             }
 
@@ -57,17 +64,25 @@
         }
 
         createWidget() {
+            console.log('Creating widget...');
+            
             // Create chat bubble
             this.createChatBubble();
+            console.log('Chat bubble created');
             
             // Create chat window
             this.createChatWindow();
+            console.log('Chat window created');
             
             // Add event listeners
             this.addEventListeners();
+            console.log('Event listeners added');
             
             // Apply custom styles
             this.applyCustomStyles();
+            console.log('Custom styles applied');
+            
+            console.log('Widget creation complete!');
         }
 
         createChatBubble() {
