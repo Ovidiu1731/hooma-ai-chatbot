@@ -266,7 +266,11 @@
             this.window.classList.add('show');
             
             // Hide the bubble when window is open for cleaner look
-            this.bubble.style.display = 'none';
+            this.bubble.style.visibility = 'hidden';
+            this.bubble.style.opacity = '0';
+            this.bubble.style.pointerEvents = 'none';
+            
+            console.log('🔄 Chat opened - bubble hidden');
             
             this.inputField.focus();
             
@@ -283,7 +287,11 @@
             this.window.classList.remove('show');
             
             // Show the bubble again when window is closed
-            this.bubble.style.display = 'flex';
+            this.bubble.style.visibility = 'visible';
+            this.bubble.style.opacity = '1';
+            this.bubble.style.pointerEvents = 'auto';
+            
+            console.log('🔄 Chat closed - bubble shown');
             
             // Track closing event
             this.trackEvent('chat_closed');
@@ -374,14 +382,29 @@
                 const logoImg = document.createElement('img');
                 logoImg.src = `${this.config.apiEndpoint}/static/images/hooma-logo.png`;
                 logoImg.alt = 'Hooma';
+                logoImg.style.cssText = 'width: 100%; height: 100%; object-fit: cover; border-radius: 50%;';
+                
                 logoImg.onerror = () => {
-                    console.error('❌ Avatar logo failed to load, using H');
+                    console.error('❌ Avatar logo failed to load, using H fallback');
+                    console.error('Failed URL:', logoImg.src);
+                    avatarDiv.innerHTML = '';
                     avatarDiv.textContent = 'H';
                 };
+                
                 logoImg.onload = () => {
-                    console.log('✅ Avatar logo loaded successfully');
+                    console.log('✅ Avatar logo loaded successfully:', logoImg.src);
                 };
+                
+                // Set fallback text first, then try to load image
+                avatarDiv.textContent = 'H';
                 avatarDiv.appendChild(logoImg);
+                
+                // If image loads successfully, it will replace the H
+                logoImg.onload = () => {
+                    console.log('✅ Avatar logo loaded, replacing H');
+                    avatarDiv.innerHTML = '';
+                    avatarDiv.appendChild(logoImg);
+                };
             }
             
             const contentDiv = document.createElement('div');
