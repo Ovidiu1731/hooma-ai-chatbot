@@ -403,6 +403,57 @@ async def get_widget_css():
         headers={"Cache-Control": "public, max-age=3600"}
     )
 
+@app.get("/test", response_class=HTMLResponse)
+async def simple_test():
+    """Simple test page for debugging widget"""
+    return """
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Widget Test</title>
+        <style>
+            body { font-family: Arial, sans-serif; padding: 20px; background: #f0f0f0; }
+            .debug { background: yellow; padding: 10px; margin: 10px 0; border-radius: 4px; }
+        </style>
+    </head>
+    <body>
+        <h1>Hooma Widget Test Page</h1>
+        <div class="debug">
+            <strong>Debug Info:</strong>
+            <div id="debug-info">Loading...</div>
+        </div>
+        
+        <p>Check the bottom-right corner for the chat widget.</p>
+        <p>Open browser console (F12) to see debug logs.</p>
+        
+        <link rel="stylesheet" href="/embed/widget.css">
+        <script src="/embed/widget.js"></script>
+        <script>
+            document.getElementById('debug-info').innerHTML = 'Files loaded. Initializing widget...';
+            
+            console.log('=== WIDGET DEBUG START ===');
+            console.log('window.HoomaChatbot:', window.HoomaChatbot);
+            
+            if (window.HoomaChatbot) {
+                console.log('HoomaChatbot found, initializing...');
+                HoomaChatbot.init({
+                    apiEndpoint: window.location.origin,
+                    primaryColor: '#ff0080',
+                    secondaryColor: '#e91e63',
+                    position: 'bottom-right'
+                });
+                document.getElementById('debug-info').innerHTML = 'Widget initialized!';
+            } else {
+                console.error('HoomaChatbot not found!');
+                document.getElementById('debug-info').innerHTML = 'ERROR: HoomaChatbot not found!';
+            }
+            
+            console.log('=== WIDGET DEBUG END ===');
+        </script>
+    </body>
+    </html>
+    """
+
 @app.get("/embed/demo.html", response_class=HTMLResponse)
 async def embed_demo(request: Request):
     """Demo page showing how to embed the widget"""
