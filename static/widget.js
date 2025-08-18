@@ -132,7 +132,7 @@
             window.innerHTML = `
                 <div class="hooma-chat-header">
                     <div class="hooma-header-content">
-                        <div class="hooma-avatar">H</div>
+                        <div class="hooma-avatar" id="hooma-header-avatar">H</div>
                         <div class="hooma-header-text">
                             <h3>${this.config.title}</h3>
                             <p>${this.config.subtitle}</p>
@@ -181,7 +181,33 @@
             this.sendButton = window.querySelector('.hooma-send-btn');
             this.closeButton = window.querySelector('.hooma-close-btn');
             
+            // Load logo in header avatar
+            this.loadHeaderAvatar();
+            
             document.body.appendChild(window);
+        }
+
+        loadHeaderAvatar() {
+            const headerAvatar = this.window.querySelector('#hooma-header-avatar');
+            if (!headerAvatar) return;
+            
+            console.log('🔄 Loading header avatar logo');
+            
+            const logoImg = document.createElement('img');
+            logoImg.src = `${this.config.apiEndpoint}/static/images/hooma-logo.png`;
+            logoImg.alt = 'Hooma';
+            logoImg.style.cssText = 'width: 100%; height: 100%; object-fit: cover; border-radius: 50%;';
+            
+            logoImg.onload = () => {
+                console.log('✅ Header avatar logo loaded successfully');
+                headerAvatar.innerHTML = '';
+                headerAvatar.appendChild(logoImg);
+            };
+            
+            logoImg.onerror = () => {
+                console.error('❌ Header avatar logo failed to load, keeping H');
+                // Keep the H that's already there
+            };
         }
 
         addEventListeners() {
