@@ -146,7 +146,7 @@
                 </div>
                 <div class="hooma-chat-messages" id="hooma-messages">
                     <div class="hooma-message assistant welcome">
-                        <div class="hooma-message-avatar">H</div>
+                        <div class="hooma-message-avatar" id="hooma-welcome-avatar">H</div>
                         <div class="hooma-message-content">${this.config.welcomeMessage}</div>
                     </div>
                 </div>
@@ -188,24 +188,35 @@
         }
 
         loadHeaderAvatar() {
+            // Load header avatar logo
             const headerAvatar = this.window.querySelector('#hooma-header-avatar');
-            if (!headerAvatar) return;
+            if (headerAvatar) {
+                console.log('🔄 Loading header avatar logo');
+                this.loadAvatarLogo(headerAvatar, 'header');
+            }
             
-            console.log('🔄 Loading header avatar logo');
-            
+            // Load welcome message avatar logo
+            const welcomeAvatar = this.window.querySelector('#hooma-welcome-avatar');
+            if (welcomeAvatar) {
+                console.log('🔄 Loading welcome message avatar logo');
+                this.loadAvatarLogo(welcomeAvatar, 'welcome');
+            }
+        }
+        
+        loadAvatarLogo(avatarElement, type) {
             const logoImg = document.createElement('img');
             logoImg.src = `${this.config.apiEndpoint}/static/images/hooma-logo.png`;
             logoImg.alt = 'Hooma';
             logoImg.style.cssText = 'width: 100%; height: 100%; object-fit: cover; border-radius: 50%;';
             
             logoImg.onload = () => {
-                console.log('✅ Header avatar logo loaded successfully');
-                headerAvatar.innerHTML = '';
-                headerAvatar.appendChild(logoImg);
+                console.log(`✅ ${type} avatar logo loaded successfully`);
+                avatarElement.innerHTML = '';
+                avatarElement.appendChild(logoImg);
             };
             
             logoImg.onerror = () => {
-                console.error('❌ Header avatar logo failed to load, keeping H');
+                console.error(`❌ ${type} avatar logo failed to load, keeping H`);
                 // Keep the H that's already there
             };
         }
