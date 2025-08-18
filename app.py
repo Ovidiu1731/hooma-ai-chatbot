@@ -321,14 +321,22 @@ async def home():
     """
     return html_content
 
+@app.get("/health")
+async def basic_health():
+    """Basic health check for Railway"""
+    return {"status": "ok", "service": "hooma-chatbot"}
+
 @app.get("/api/health", response_model=HealthResponse)
 async def health_check():
-    """Health check endpoint"""
+    """Detailed health check endpoint"""
+    # Check if we have basic configuration
+    ai_status = "configured" if (config.OPENAI_API_KEY or config.ANTHROPIC_API_KEY) else "no_api_key"
+    
     return HealthResponse(
         status="healthy",
         timestamp=datetime.now(timezone.utc).isoformat(),
         version="1.0.0",
-        ai_provider=config.AI_PROVIDER
+        ai_provider=f"{config.AI_PROVIDER}_{ai_status}"
     )
 
 @app.post("/api/chat", response_model=ChatResponse)
@@ -468,8 +476,8 @@ if os.getenv("ADMIN_USERNAME") and os.getenv("ADMIN_PASSWORD"):
         from admin import setup_admin
         setup_admin(app)
         print("✅ Admin panel enabled at /admin")
-    except ImportError:
-        print("⚠️ Admin panel not available (admin.py not found)")
+    except Exception as e:
+        print(f"⚠️ Admin panel not available: {e}")
 else:
     print("ℹ️ Admin panel disabled (set ADMIN_USERNAME and ADMIN_PASSWORD to enable)")
 
