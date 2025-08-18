@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hooma AI Chatbot - Webflow Integration Guide</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2563eb;
+            border-bottom: 3px solid #2563eb;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #1d4ed8;
+            margin-top: 30px;
+        }
+        .code-block {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            position: relative;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .copy-btn:hover {
+            background: #1d4ed8;
+        }
+        .step {
+            background: #e3f2fd;
+            border-left: 4px solid #2563eb;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .warning {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .success {
+            background: #d1edff;
+            border-left: 4px solid #198754;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .config-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .config-table th,
+        .config-table td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+        }
+        .config-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+        }
+        .screenshot {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            margin: 20px 0;
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Hooma AI Chatbot - Webflow Integration Guide</h1>
+        
+        <p><strong>Welcome!</strong> This guide will help you integrate the Hooma AI Chatbot into your Webflow website in just a few simple steps.</p>
+
+        <h2>📋 Prerequisites</h2>
+        <ul>
+            <li>Access to your Webflow project's custom code settings</li>
+            <li>Your Railway deployment URL (e.g., <code>https://your-app-name.railway.app</code>)</li>
+            <li>Basic understanding of HTML/CSS (optional but helpful)</li>
+        </ul>
+
+        <h2>🎯 Quick Start (Recommended)</h2>
+        
+        <div class="step">
+            <h3>Step 1: Copy the Embed Code</h3>
+            <p>Copy this code and paste it into your Webflow site's custom code section:</p>
+        </div>
+
+        <div class="code-block">
+            <button class="copy-btn" onclick="copyToClipboard('embed-code')">Copy</button>
+            <div id="embed-code"><!-- Hooma AI Chatbot -->
+<link rel="stylesheet" href="https://YOUR-RAILWAY-DOMAIN.railway.app/embed/widget.css">
+<script src="https://YOUR-RAILWAY-DOMAIN.railway.app/embed/widget.js"></script>
+<script>
+  HoomaChatbot.init({
+    apiEndpoint: 'https://YOUR-RAILWAY-DOMAIN.railway.app',
+    primaryColor: '#2563eb',
+    secondaryColor: '#1d4ed8',
+    position: 'bottom-right',
+    title: 'Hooma AI Assistant',
+    subtitle: 'AI Business Solutions'
+  });
+</script></div>
+        </div>
+
+        <div class="warning">
+            <strong>⚠️ Important:</strong> Replace <code>YOUR-RAILWAY-DOMAIN</code> with your actual Railway deployment URL!
+        </div>
+
+        <div class="step">
+            <h3>Step 2: Add to Webflow</h3>
+            <ol>
+                <li>Log into your Webflow Designer</li>
+                <li>Go to Project Settings (gear icon)</li>
+                <li>Navigate to the "Custom Code" tab</li>
+                <li>Paste the embed code in the "Footer Code" section</li>
+                <li>Click "Save Changes"</li>
+                <li>Publish your site</li>
+            </ol>
+        </div>
+
+        <div class="success">
+            <strong>🎉 That's it!</strong> Your Hooma AI Chatbot should now appear on your website.
+        </div>
+
+        <h2>⚙️ Customization Options</h2>
+        
+        <table class="config-table">
+            <thead>
+                <tr>
+                    <th>Option</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>apiEndpoint</code></td>
+                    <td>String</td>
+                    <td>Required</td>
+                    <td>Your Railway deployment URL</td>
+                </tr>
+                <tr>
+                    <td><code>primaryColor</code></td>
+                    <td>String</td>
+                    <td>#2563eb</td>
+                    <td>Main brand color (hex code)</td>
+                </tr>
+                <tr>
+                    <td><code>secondaryColor</code></td>
+                    <td>String</td>
+                    <td>#1d4ed8</td>
+                    <td>Secondary brand color (hex code)</td>
+                </tr>
+                <tr>
+                    <td><code>position</code></td>
+                    <td>String</td>
+                    <td>bottom-right</td>
+                    <td>bottom-right, bottom-left, top-right, top-left</td>
+                </tr>
+                <tr>
+                    <td><code>title</code></td>
+                    <td>String</td>
+                    <td>Hooma AI Assistant</td>
+                    <td>Chat window title</td>
+                </tr>
+                <tr>
+                    <td><code>subtitle</code></td>
+                    <td>String</td>
+                    <td>AI Business Solutions</td>
+                    <td>Chat window subtitle</td>
+                </tr>
+                <tr>
+                    <td><code>welcomeMessage</code></td>
+                    <td>String</td>
+                    <td>Hello! I'm here to help...</td>
+                    <td>First message shown to users</td>
+                </tr>
+                <tr>
+                    <td><code>placeholder</code></td>
+                    <td>String</td>
+                    <td>Type your message...</td>
+                    <td>Input field placeholder text</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>🎨 Custom Branding Example</h2>
+        
+        <div class="code-block">
+            <button class="copy-btn" onclick="copyToClipboard('custom-code')">Copy</button>
+            <div id="custom-code"><!-- Hooma AI Chatbot - Custom Branding -->
+<link rel="stylesheet" href="https://YOUR-RAILWAY-DOMAIN.railway.app/embed/widget.css">
+<script src="https://YOUR-RAILWAY-DOMAIN.railway.app/embed/widget.js"></script>
+<script>
+  HoomaChatbot.init({
+    apiEndpoint: 'https://YOUR-RAILWAY-DOMAIN.railway.app',
+    primaryColor: '#0066cc',        // Your brand blue
+    secondaryColor: '#004499',      // Darker shade
+    position: 'bottom-left',        // Different position
+    title: 'Hooma Business AI',     // Custom title
+    subtitle: 'Growth Accelerator', // Custom subtitle
+    welcomeMessage: 'Ready to accelerate your business growth with AI? Let me show you how Hooma can help transform your operations!',
+    placeholder: 'Ask about AI solutions...'
+  });
+</script></div>
+        </div>
+
+        <h2>📱 Advanced Integration Options</h2>
+
+        <h3>Option 1: Data Attributes (Simple)</h3>
+        <p>For basic customization, you can use data attributes:</p>
+        
+        <div class="code-block">
+            <button class="copy-btn" onclick="copyToClipboard('data-attrs')">Copy</button>
+            <div id="data-attrs"><!-- Simple data attribute setup -->
+<link rel="stylesheet" href="https://YOUR-RAILWAY-DOMAIN.railway.app/embed/widget.css">
+<script 
+  src="https://YOUR-RAILWAY-DOMAIN.railway.app/embed/widget.js"
+  data-api-endpoint="https://YOUR-RAILWAY-DOMAIN.railway.app"
+  data-primary-color="#2563eb"
+  data-position="bottom-right">
+</script></div>
+        </div>
+
+        <h3>Option 2: Conditional Loading</h3>
+        <p>Load the chatbot only on specific pages:</p>
+        
+        <div class="code-block">
+            <button class="copy-btn" onclick="copyToClipboard('conditional')">Copy</button>
+            <div id="conditional"><!-- Conditional loading -->
+<link rel="stylesheet" href="https://YOUR-RAILWAY-DOMAIN.railway.app/embed/widget.css">
+<script src="https://YOUR-RAILWAY-DOMAIN.railway.app/embed/widget.js"></script>
+<script>
+  // Only load on specific pages
+  if (window.location.pathname === '/' || 
+      window.location.pathname.includes('/services/') ||
+      window.location.pathname.includes('/contact/')) {
+    
+    HoomaChatbot.init({
+      apiEndpoint: 'https://YOUR-RAILWAY-DOMAIN.railway.app',
+      primaryColor: '#2563eb',
+      position: 'bottom-right'
+    });
+  }
+</script></div>
+        </div>
+
+        <h3>Option 3: Business Hours Integration</h3>
+        <p>Show different messages based on business hours:</p>
+        
+        <div class="code-block">
+            <button class="copy-btn" onclick="copyToClipboard('business-hours')">Copy</button>
+            <div id="business-hours"><!-- Business hours integration -->
+<link rel="stylesheet" href="https://YOUR-RAILWAY-DOMAIN.railway.app/embed/widget.css">
+<script src="https://YOUR-RAILWAY-DOMAIN.railway.app/embed/widget.js"></script>
+<script>
+  // Check business hours (adjust timezone as needed)
+  const now = new Date();
+  const hour = now.getHours();
+  const isBusinessHours = hour >= 9 && hour < 18; // 9 AM to 6 PM
+  
+  const welcomeMessage = isBusinessHours 
+    ? "Hello! Our team is online and ready to help you with AI business solutions. How can we assist you today?"
+    : "Hello! While our team is currently offline, I'm here 24/7 to help answer your questions about Hooma's AI business solutions. How can I assist you?";
+    
+  HoomaChatbot.init({
+    apiEndpoint: 'https://YOUR-RAILWAY-DOMAIN.railway.app',
+    primaryColor: '#2563eb',
+    position: 'bottom-right',
+    welcomeMessage: welcomeMessage,
+    subtitle: isBusinessHours ? 'Team Online' : 'AI Assistant'
+  });
+</script></div>
+        </div>
+
+        <h2>🔧 Troubleshooting</h2>
+
+        <h3>Common Issues</h3>
+        <ul>
+            <li><strong>Chatbot not appearing:</strong> Check that you've replaced the Railway domain and published your site</li>
+            <li><strong>CORS errors:</strong> Ensure your domain is added to the ALLOWED_ORIGINS environment variable</li>
+            <li><strong>Styling conflicts:</strong> The widget uses isolated CSS, but check for z-index conflicts</li>
+            <li><strong>Mobile responsiveness:</strong> The widget automatically adapts to mobile screens</li>
+        </ul>
+
+        <h3>Testing Checklist</h3>
+        <div class="step">
+            <ul>
+                <li>✅ Chatbot bubble appears in the correct position</li>
+                <li>✅ Clicking the bubble opens the chat window</li>
+                <li>✅ Messages can be sent and responses received</li>
+                <li>✅ Widget works on mobile devices</li>
+                <li>✅ Custom colors and branding are applied</li>
+                <li>✅ Chat window can be closed properly</li>
+            </ul>
+        </div>
+
+        <h2>📞 Support</h2>
+        <p>If you need help with the integration or have questions about customization:</p>
+        <ul>
+            <li>📧 Email: <a href="mailto:hello@hooma.io">hello@hooma.io</a></li>
+            <li>🌐 Website: <a href="https://hooma.io" target="_blank">hooma.io</a></li>
+            <li>📅 Book a consultation for technical support</li>
+        </ul>
+
+        <div class="success">
+            <strong>🎯 Pro Tip:</strong> Test the chatbot in an incognito/private browser window to see the full user experience!
+        </div>
+    </div>
+
+    <script>
+        function copyToClipboard(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.textContent || element.innerText;
+            
+            navigator.clipboard.writeText(text).then(function() {
+                // Show feedback
+                const btn = element.parentNode.querySelector('.copy-btn');
+                const originalText = btn.textContent;
+                btn.textContent = 'Copied!';
+                btn.style.background = '#198754';
+                
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.background = '#2563eb';
+                }, 2000);
+            }).catch(function(err) {
+                console.error('Could not copy text: ', err);
+                alert('Copy failed. Please select and copy manually.');
+            });
+        }
+    </script>
+</body>
+</html>

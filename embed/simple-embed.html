@@ -1,0 +1,25 @@
+<!-- 
+  HOOMA AI CHATBOT - SIMPLE EMBED CODE
+  
+  Instructions:
+  1. Replace "YOUR-RAILWAY-DOMAIN" with your actual Railway deployment URL
+  2. Copy this entire code block
+  3. Paste it in your Webflow site's Footer Code section (Project Settings > Custom Code)
+  4. Publish your site
+  
+  Example: https://hooma-chatbot-abc123.railway.app
+-->
+
+<!-- Hooma AI Chatbot -->
+<link rel="stylesheet" href="https://YOUR-RAILWAY-DOMAIN.railway.app/embed/widget.css">
+<script src="https://YOUR-RAILWAY-DOMAIN.railway.app/embed/widget.js"></script>
+<script>
+  HoomaChatbot.init({
+    apiEndpoint: 'https://YOUR-RAILWAY-DOMAIN.railway.app',
+    primaryColor: '#2563eb',
+    secondaryColor: '#1d4ed8',
+    position: 'bottom-right',
+    title: 'Hooma AI Assistant',
+    subtitle: 'AI Business Solutions'
+  });
+</script>
