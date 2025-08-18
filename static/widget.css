@@ -1,4 +1,18 @@
-/* Hooma AI Chatbot Widget Styles */
+/* Hooma AI Chatbot Widget Styles - Matching hooma.io Brand */
+
+/* CSS Custom Properties - Hooma Brand Colors */
+:root {
+    --hooma-black: #000000;
+    --hooma-pink: #ff0080;
+    --hooma-pink-light: #fff5f8;
+    --hooma-gray: #f5f5f5;
+    --hooma-text: #333333;
+    --hooma-text-light: #666666;
+    --hooma-border: #e0e0e0;
+    --hooma-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
+    --hooma-radius: 16px;
+    --hooma-white: #ffffff;
+}
 
 /* Reset and base styles for the widget */
 .hooma-chatbot * {
@@ -10,32 +24,38 @@
 .hooma-chatbot {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     font-size: 14px;
-    line-height: 1.4;
-    z-index: 2147483647;
+    line-height: 1.5;
+    z-index: 9999;
     position: fixed;
 }
 
-/* Chat bubble launcher */
+/* Chat bubble launcher - Hooma Brand Style */
 .hooma-chat-bubble {
     position: fixed;
     width: 60px;
     height: 60px;
-    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    background: linear-gradient(135deg, var(--hooma-black) 0%, var(--hooma-pink) 100%);
     border-radius: 50%;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 20px rgba(37, 99, 235, 0.3);
+    box-shadow: 0 4px 20px rgba(255, 0, 128, 0.3);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 2147483647;
+    z-index: 9999;
     border: none;
     outline: none;
+    animation: hooma-pulse-subtle 3s ease-in-out infinite;
 }
 
 .hooma-chat-bubble:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 25px rgba(37, 99, 235, 0.4);
+    transform: scale(1.08);
+    box-shadow: 0 6px 30px rgba(255, 0, 128, 0.4);
+}
+
+@keyframes hooma-pulse-subtle {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
 }
 
 .hooma-chat-bubble.bottom-right {
@@ -93,18 +113,19 @@
     100% { transform: scale(1); }
 }
 
-/* Chat window */
+/* Chat window - Premium Hooma Design */
 .hooma-chat-window {
     position: fixed;
-    width: 380px;
+    width: 400px;
     height: 600px;
-    background: white;
-    border-radius: 16px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    background: var(--hooma-white);
+    border-radius: var(--hooma-radius);
+    box-shadow: var(--hooma-shadow);
+    border: 1px solid var(--hooma-border);
     display: none;
     flex-direction: column;
     overflow: hidden;
-    z-index: 2147483646;
+    z-index: 9998;
     animation: hooma-slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -143,14 +164,16 @@
     }
 }
 
-/* Chat header */
+/* Chat header - Hooma Brand Style */
 .hooma-chat-header {
-    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-    color: white;
-    padding: 20px;
+    background: linear-gradient(45deg, var(--hooma-black) 0%, #333333 100%);
+    color: var(--hooma-white);
+    padding: 16px 20px;
+    height: 70px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-radius: var(--hooma-radius) var(--hooma-radius) 0 0;
 }
 
 .hooma-header-content {
@@ -162,13 +185,33 @@
 .hooma-avatar {
     width: 40px;
     height: 40px;
-    background: rgba(255, 255, 255, 0.2);
+    background: linear-gradient(45deg, var(--hooma-pink) 0%, #e91e63 100%);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
     font-size: 16px;
+    color: var(--hooma-white);
+    position: relative;
+}
+
+.hooma-avatar::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 12px;
+    height: 12px;
+    background: var(--hooma-pink);
+    border: 2px solid var(--hooma-white);
+    border-radius: 50%;
+    animation: hooma-online-pulse 2s ease-in-out infinite;
+}
+
+@keyframes hooma-online-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.1); }
 }
 
 .hooma-header-text h3 {
@@ -201,15 +244,35 @@
     background: rgba(255, 255, 255, 0.1);
 }
 
-/* Chat messages area */
+/* Chat messages area - Clean Hooma Style */
 .hooma-chat-messages {
     flex: 1;
     overflow-y: auto;
-    padding: 20px;
+    padding: 16px;
     display: flex;
     flex-direction: column;
     gap: 16px;
-    background: #f8fafc;
+    background: var(--hooma-white);
+    max-height: 460px;
+}
+
+/* Custom scrollbar */
+.hooma-chat-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+.hooma-chat-messages::-webkit-scrollbar-track {
+    background: var(--hooma-gray);
+    border-radius: 3px;
+}
+
+.hooma-chat-messages::-webkit-scrollbar-thumb {
+    background: var(--hooma-pink);
+    border-radius: 3px;
+}
+
+.hooma-chat-messages::-webkit-scrollbar-thumb:hover {
+    background: #e91e63;
 }
 
 .hooma-message {
@@ -252,32 +315,41 @@
 }
 
 .hooma-message.user .hooma-message-avatar {
-    background: #e5e7eb;
-    color: #374151;
+    background: var(--hooma-gray);
+    color: var(--hooma-text);
 }
 
 .hooma-message.assistant .hooma-message-avatar {
-    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-    color: white;
+    background: linear-gradient(45deg, var(--hooma-black) 0%, var(--hooma-pink) 100%);
+    color: var(--hooma-white);
 }
 
 .hooma-message-content {
-    background: white;
     padding: 12px 16px;
     border-radius: 18px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     word-wrap: break-word;
     line-height: 1.5;
+    font-size: 14px;
 }
 
 .hooma-message.user .hooma-message-content {
-    background: #2563eb;
-    color: white;
-    border-bottom-right-radius: 6px;
+    background: linear-gradient(45deg, var(--hooma-pink) 0%, #e91e63 100%);
+    color: var(--hooma-white);
+    border-radius: 18px 18px 4px 18px;
 }
 
 .hooma-message.assistant .hooma-message-content {
-    border-bottom-left-radius: 6px;
+    background: var(--hooma-gray);
+    color: var(--hooma-text);
+    border-radius: 4px 18px 18px 18px;
+}
+
+/* Welcome message special styling */
+.hooma-message.assistant.welcome .hooma-message-content {
+    background: var(--hooma-pink-light);
+    border-left: 4px solid var(--hooma-pink);
+    font-style: italic;
 }
 
 .hooma-message-time {
@@ -287,16 +359,15 @@
     text-align: center;
 }
 
-/* Typing indicator */
+/* Typing indicator - Hooma Pink Theme */
 .hooma-typing-indicator {
     display: flex;
     align-items: center;
     gap: 8px;
     padding: 12px 16px;
-    background: white;
-    border-radius: 18px;
-    border-bottom-left-radius: 6px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    background: var(--hooma-gray);
+    border-radius: 4px 18px 18px 18px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     animation: hooma-messageIn 0.3s ease-out;
 }
 
@@ -308,7 +379,7 @@
 .hooma-typing-dot {
     width: 8px;
     height: 8px;
-    background: #9ca3af;
+    background: var(--hooma-pink);
     border-radius: 50%;
     animation: hooma-typing 1.4s infinite ease-in-out;
 }
@@ -327,17 +398,19 @@
     }
 }
 
-/* Chat input area */
+/* Chat input area - Hooma Style */
 .hooma-chat-input {
-    padding: 20px;
-    background: white;
-    border-top: 1px solid #e5e7eb;
+    padding: 16px 20px;
+    background: var(--hooma-white);
+    border-top: 1px solid var(--hooma-border);
+    border-radius: 0 0 var(--hooma-radius) var(--hooma-radius);
 }
 
 .hooma-input-container {
     display: flex;
     gap: 8px;
     align-items: flex-end;
+    position: relative;
 }
 
 .hooma-input-wrapper {
@@ -347,51 +420,59 @@
 
 .hooma-input-field {
     width: 100%;
-    min-height: 40px;
+    min-height: 44px;
     max-height: 120px;
-    padding: 12px 16px;
-    border: 1px solid #d1d5db;
-    border-radius: 20px;
+    padding: 12px 48px 12px 16px;
+    border: 1px solid var(--hooma-border);
+    border-radius: 24px;
     outline: none;
     resize: none;
     font-family: inherit;
     font-size: 14px;
     line-height: 1.4;
-    transition: border-color 0.2s ease;
-    background: white;
+    transition: all 0.2s ease;
+    background: var(--hooma-gray);
 }
 
 .hooma-input-field:focus {
-    border-color: #2563eb;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    border-color: var(--hooma-pink);
+    box-shadow: 0 0 0 3px rgba(255, 0, 128, 0.1);
+    background: var(--hooma-white);
 }
 
 .hooma-input-field::placeholder {
-    color: #9ca3af;
+    color: var(--hooma-text-light);
 }
 
 .hooma-send-btn {
-    width: 40px;
-    height: 40px;
-    background: #2563eb;
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(45deg, var(--hooma-pink) 0%, #e91e63 100%);
     border: none;
     border-radius: 50%;
-    color: white;
+    color: var(--hooma-white);
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.2s ease;
+    transition: all 0.2s ease;
     flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(255, 0, 128, 0.2);
 }
 
 .hooma-send-btn:hover:not(:disabled) {
-    background: #1d4ed8;
+    background: linear-gradient(45deg, #e91e63 0%, #c2185b 100%);
+    transform: translateY(-50%) scale(1.05);
 }
 
 .hooma-send-btn:disabled {
-    background: #9ca3af;
+    background: var(--hooma-text-light);
     cursor: not-allowed;
+    box-shadow: none;
 }
 
 .hooma-send-icon {
@@ -420,20 +501,64 @@
     text-decoration: underline;
 }
 
-/* Mobile responsiveness */
-@media (max-width: 480px) {
+/* Mobile responsiveness - Hooma Optimized */
+@media (max-width: 768px) {
     .hooma-chat-window {
         width: calc(100vw - 20px);
-        height: calc(100vh - 100px);
-        bottom: 90px !important;
+        height: calc(100vh - 90px);
+        bottom: 80px !important;
         right: 10px !important;
         left: 10px !important;
         top: auto !important;
+        border-radius: var(--hooma-radius);
     }
     
     .hooma-chat-bubble {
-        bottom: 20px !important;
-        right: 20px !important;
+        bottom: 24px !important;
+        right: 24px !important;
+        width: 56px;
+        height: 56px;
+    }
+    
+    .hooma-chat-header {
+        padding: 12px 16px;
+        height: 60px;
+    }
+    
+    .hooma-avatar {
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
+    }
+    
+    .hooma-input-field {
+        min-height: 40px;
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+    
+    .hooma-send-btn {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hooma-chat-messages {
+        padding: 12px;
+        gap: 12px;
+    }
+    
+    .hooma-message-content {
+        font-size: 14px;
+        padding: 10px 14px;
+    }
+    
+    .hooma-chat-input {
+        padding: 12px 16px;
+    }
+    
+    .hooma-input-field {
+        padding: 10px 40px 10px 14px;
     }
 }
 

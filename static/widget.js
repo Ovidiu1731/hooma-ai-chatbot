@@ -17,13 +17,13 @@
             this.sessionId = null;
             this.apiEndpoint = '';
             this.config = {
-                primaryColor: '#2563eb',
-                secondaryColor: '#1d4ed8',
+                primaryColor: '#ff0080',
+                secondaryColor: '#e91e63',
                 position: 'bottom-right',
-                welcomeMessage: "Hello! I'm here to help you learn about Hooma's AI business solutions. How can I assist you today?",
-                placeholder: 'Type your message...',
+                welcomeMessage: "Welcome to Hooma! I'm your AI assistant, ready to help you discover how our AI-powered growth systems can transform your business. What would you like to know?",
+                placeholder: 'Ask about AI solutions...',
                 title: 'Hooma AI Assistant',
-                subtitle: 'AI Business Solutions',
+                subtitle: 'Online • AI Business Solutions',
                 poweredBy: true
             };
             this.isTyping = false;
@@ -106,7 +106,7 @@
                     </button>
                 </div>
                 <div class="hooma-chat-messages" id="hooma-messages">
-                    <div class="hooma-message assistant">
+                    <div class="hooma-message assistant welcome">
                         <div class="hooma-message-avatar">H</div>
                         <div class="hooma-message-content">${this.config.welcomeMessage}</div>
                     </div>
