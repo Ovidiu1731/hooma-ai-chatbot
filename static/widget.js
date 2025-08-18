@@ -405,36 +405,33 @@
                 avatarDiv.textContent = 'U';
             } else {
                 // Try to load logo for assistant
-                console.log('🔄 Creating avatar with logo for assistant message');
+                console.log('🔄 Creating message avatar with logo for assistant');
+                
+                // Set fallback first
+                avatarDiv.innerHTML = 'H';
+                avatarDiv.style.position = 'relative';
                 
                 const logoImg = document.createElement('img');
                 logoImg.src = `${this.config.apiEndpoint}/static/images/hooma-logo.png`;
                 logoImg.alt = 'Hooma';
-                logoImg.style.cssText = 'width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block;';
-                
-                // Set fallback first
-                avatarDiv.textContent = 'H';
+                logoImg.style.cssText = 'width: 100%; height: 100%; object-fit: cover; border-radius: 50%; position: absolute; top: 0; left: 0; z-index: 1;';
                 
                 logoImg.onload = () => {
-                    console.log('✅ Avatar logo loaded successfully, replacing H');
+                    console.log('✅ Message avatar logo loaded successfully');
                     avatarDiv.innerHTML = '';
                     avatarDiv.appendChild(logoImg);
                 };
                 
                 logoImg.onerror = () => {
-                    console.error('❌ Avatar logo failed to load from:', logoImg.src);
-                    console.error('Keeping H fallback');
-                    // H is already set, so just keep it
+                    console.error('❌ Message avatar logo failed to load from:', logoImg.src);
+                    console.error('Using H fallback for message avatar');
                 };
                 
-                // Add image to DOM to start loading (hidden behind the H text)
-                logoImg.style.position = 'absolute';
-                logoImg.style.top = '0';
-                logoImg.style.left = '0';
-                logoImg.style.zIndex = '-1';
-                avatarDiv.appendChild(logoImg);
-                
-                console.log('🔄 Avatar image added to DOM, loading from:', logoImg.src);
+                // Add to DOM to trigger loading
+                setTimeout(() => {
+                    avatarDiv.appendChild(logoImg);
+                    console.log('🔄 Message avatar image loading from:', logoImg.src);
+                }, 10);
             }
             
             const contentDiv = document.createElement('div');

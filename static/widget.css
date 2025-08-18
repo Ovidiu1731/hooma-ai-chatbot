@@ -227,14 +227,15 @@
 .hooma-avatar::after {
     content: '';
     position: absolute;
-    top: -2px;
-    right: -2px;
+    top: -4px;
+    right: -4px;
     width: 12px;
     height: 12px;
     background: var(--hooma-pink);
     border: 2px solid var(--hooma-white);
     border-radius: 50%;
     animation: hooma-online-pulse 2s ease-in-out infinite;
+    z-index: 10;
 }
 
 /* Adjust pink dot position when chat bubble has logo to avoid overlap */
