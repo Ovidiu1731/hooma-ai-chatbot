@@ -492,7 +492,7 @@ async def embed_demo(request: Request):
 &nbsp;&nbsp;&nbsp;&nbsp;secondaryColor: '#e91e63',<br>
 &nbsp;&nbsp;&nbsp;&nbsp;position: 'bottom-right',<br>
 &nbsp;&nbsp;&nbsp;&nbsp;title: 'Hooma AI Assistant',<br>
-&nbsp;&nbsp;&nbsp;&nbsp;subtitle: 'Online • AI Business Solutions'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;subtitle: 'AI Business Solutions'<br>
 &nbsp;&nbsp;}});<br>
 &lt;/script&gt;
             </div>
@@ -522,7 +522,7 @@ async def embed_demo(request: Request):
                         secondaryColor: '#e91e63',
                         position: 'bottom-right',
                         title: 'Hooma AI Assistant',
-                        subtitle: 'Online • AI Business Solutions',
+                        subtitle: 'AI Business Solutions',
                         welcomeMessage: 'Hi! I\'m Hooma\'s AI assistant. I can help you learn about our AI business solutions and growth systems. What would you like to know?'
                     }});
                     console.log('Hooma Chatbot initialized successfully!');

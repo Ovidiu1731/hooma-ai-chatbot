@@ -23,7 +23,7 @@
                 welcomeMessage: "Hi! I'm Hooma's AI assistant. I can help you learn about our AI business solutions and growth systems. What would you like to know?",
                 placeholder: 'Ask about AI solutions...',
                 title: 'Hooma AI Assistant',
-                subtitle: 'Online • AI Business Solutions',
+                subtitle: 'AI Business Solutions',
                 poweredBy: true
             };
             this.isTyping = false;

@@ -6,7 +6,7 @@
     --hooma-pink: #ff5da2;
     --hooma-pink-light: #fff8fb;
     --hooma-gray: #f5f5f5;
-    --hooma-text: #333333;
+    --hooma-text: #1a1a1a;
     --hooma-text-light: #666666;
     --hooma-border: #e0e0e0;
     --hooma-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
@@ -118,10 +118,10 @@
     position: fixed;
     width: 320px;
     height: 450px;
-    background: var(--hooma-white);
+    background: #1a1a1a;
     border-radius: var(--hooma-radius);
     box-shadow: var(--hooma-shadow);
-    border: 1px solid var(--hooma-border);
+    border: none;
     display: none;
     flex-direction: column;
     overflow: hidden;
@@ -252,7 +252,7 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
-    background: var(--hooma-white);
+    background: #1a1a1a;
     max-height: 310px;
 }
 
@@ -340,16 +340,17 @@
 }
 
 .hooma-message.assistant .hooma-message-content {
-    background: var(--hooma-gray);
-    color: var(--hooma-text);
+    background: #2a2a2a;
+    color: var(--hooma-white);
     border-radius: 4px 18px 18px 18px;
 }
 
 /* Welcome message special styling */
 .hooma-message.assistant.welcome .hooma-message-content {
-    background: var(--hooma-pink-light);
+    background: #2a2a2a;
     border-left: 4px solid var(--hooma-pink);
     font-style: italic;
+    color: var(--hooma-white);
 }
 
 .hooma-message-time {
@@ -401,8 +402,8 @@
 /* Chat input area - Hooma Style */
 .hooma-chat-input {
     padding: 16px 20px;
-    background: var(--hooma-white);
-    border-top: 1px solid var(--hooma-border);
+    background: #1a1a1a;
+    border-top: 1px solid #333;
     border-radius: 0 0 var(--hooma-radius) var(--hooma-radius);
 }
 
@@ -423,7 +424,7 @@
     min-height: 44px;
     max-height: 120px;
     padding: 12px 48px 12px 16px;
-    border: 1px solid var(--hooma-border);
+    border: 1px solid #444;
     border-radius: 24px;
     outline: none;
     resize: none;
@@ -431,17 +432,19 @@
     font-size: 14px;
     line-height: 1.4;
     transition: all 0.2s ease;
-    background: var(--hooma-gray);
+    background: #2a2a2a;
+    color: var(--hooma-white);
 }
 
 .hooma-input-field:focus {
     border-color: var(--hooma-pink);
-    box-shadow: 0 0 0 3px rgba(255, 0, 128, 0.1);
-    background: var(--hooma-white);
+    box-shadow: 0 0 0 3px rgba(255, 93, 162, 0.1);
+    background: #2a2a2a;
+    color: var(--hooma-white);
 }
 
 .hooma-input-field::placeholder {
-    color: var(--hooma-text-light);
+    color: #888;
 }
 
 .hooma-send-btn {
@@ -484,15 +487,15 @@
 /* Powered by footer */
 .hooma-powered-by {
     padding: 8px 20px;
-    background: #f8fafc;
-    border-top: 1px solid #e5e7eb;
+    background: #1a1a1a;
+    border-top: 1px solid #333;
     text-align: center;
     font-size: 11px;
-    color: #6b7280;
+    color: #888;
 }
 
 .hooma-powered-by a {
-    color: #2563eb;
+    color: var(--hooma-white);
     text-decoration: none;
     font-weight: 500;
 }
