@@ -3,8 +3,8 @@
 /* CSS Custom Properties - Hooma Brand Colors */
 :root {
     --hooma-black: #000000;
-    --hooma-pink: #ff0080;
-    --hooma-pink-light: #fff5f8;
+    --hooma-pink: #ff5da2;
+    --hooma-pink-light: #fff8fb;
     --hooma-gray: #f5f5f5;
     --hooma-text: #333333;
     --hooma-text-light: #666666;
@@ -116,8 +116,8 @@
 /* Chat window - Premium Hooma Design */
 .hooma-chat-window {
     position: fixed;
-    width: 360px;
-    height: 520px;
+    width: 320px;
+    height: 450px;
     background: var(--hooma-white);
     border-radius: var(--hooma-radius);
     box-shadow: var(--hooma-shadow);
@@ -134,7 +134,7 @@
 }
 
 .hooma-chat-window.bottom-right {
-    bottom: 90px;
+    bottom: 70px;
     right: 20px;
 }
 
@@ -168,8 +168,8 @@
 .hooma-chat-header {
     background: linear-gradient(45deg, var(--hooma-black) 0%, #333333 100%);
     color: var(--hooma-white);
-    padding: 14px 18px;
-    height: 64px;
+    padding: 12px 16px;
+    height: 56px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -183,15 +183,15 @@
 }
 
 .hooma-avatar {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     background: linear-gradient(45deg, var(--hooma-pink) 0%, #e91e63 100%);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 14px;
     color: var(--hooma-white);
     position: relative;
 }
@@ -248,12 +248,12 @@
 .hooma-chat-messages {
     flex: 1;
     overflow-y: auto;
-    padding: 14px;
+    padding: 12px;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 12px;
     background: var(--hooma-white);
-    max-height: 380px;
+    max-height: 310px;
 }
 
 /* Custom scrollbar */

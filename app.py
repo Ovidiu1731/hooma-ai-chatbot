@@ -438,7 +438,7 @@ async def simple_test():
                 console.log('HoomaChatbot found, initializing...');
                 HoomaChatbot.init({
                     apiEndpoint: window.location.origin,
-                    primaryColor: '#ff0080',
+                    primaryColor: '#ff5da2',
                     secondaryColor: '#e91e63',
                     position: 'bottom-right'
                 });
@@ -488,7 +488,7 @@ async def embed_demo(request: Request):
 &lt;script&gt;<br>
 &nbsp;&nbsp;HoomaChatbot.init({{<br>
 &nbsp;&nbsp;&nbsp;&nbsp;apiEndpoint: '{base_url}',<br>
-&nbsp;&nbsp;&nbsp;&nbsp;primaryColor: '#ff0080',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;primaryColor: '#ff5da2',<br>
 &nbsp;&nbsp;&nbsp;&nbsp;secondaryColor: '#e91e63',<br>
 &nbsp;&nbsp;&nbsp;&nbsp;position: 'bottom-right',<br>
 &nbsp;&nbsp;&nbsp;&nbsp;title: 'Hooma AI Assistant',<br>
@@ -518,12 +518,12 @@ async def embed_demo(request: Request):
                 if (window.HoomaChatbot) {{
                     HoomaChatbot.init({{
                         apiEndpoint: window.location.origin,
-                        primaryColor: '#ff0080',
+                        primaryColor: '#ff5da2',
                         secondaryColor: '#e91e63',
                         position: 'bottom-right',
                         title: 'Hooma AI Assistant',
                         subtitle: 'Online • AI Business Solutions',
-                        welcomeMessage: 'Welcome to Hooma! I\'m your AI assistant, ready to help you discover how our AI-powered growth systems can transform your business. What would you like to know?'
+                        welcomeMessage: 'Hi! I\'m Hooma\'s AI assistant. I can help you learn about our AI business solutions and growth systems. What would you like to know?'
                     }});
                     console.log('Hooma Chatbot initialized successfully!');
                 }} else {{

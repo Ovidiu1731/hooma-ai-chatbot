@@ -17,10 +17,10 @@
             this.sessionId = null;
             this.apiEndpoint = '';
             this.config = {
-                primaryColor: '#ff0080',
+                primaryColor: '#ff5da2',
                 secondaryColor: '#e91e63',
                 position: 'bottom-right',
-                welcomeMessage: "Welcome to Hooma! I'm your AI assistant, ready to help you discover how our AI-powered growth systems can transform your business. What would you like to know?",
+                welcomeMessage: "Hi! I'm Hooma's AI assistant. I can help you learn about our AI business solutions and growth systems. What would you like to know?",
                 placeholder: 'Ask about AI solutions...',
                 title: 'Hooma AI Assistant',
                 subtitle: 'Online • AI Business Solutions',
