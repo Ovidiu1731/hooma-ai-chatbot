@@ -379,32 +379,36 @@
                 avatarDiv.textContent = 'U';
             } else {
                 // Try to load logo for assistant
+                console.log('🔄 Creating avatar with logo for assistant message');
+                
                 const logoImg = document.createElement('img');
                 logoImg.src = `${this.config.apiEndpoint}/static/images/hooma-logo.png`;
                 logoImg.alt = 'Hooma';
-                logoImg.style.cssText = 'width: 100%; height: 100%; object-fit: cover; border-radius: 50%;';
+                logoImg.style.cssText = 'width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block;';
                 
-                logoImg.onerror = () => {
-                    console.error('❌ Avatar logo failed to load, using H fallback');
-                    console.error('Failed URL:', logoImg.src);
-                    avatarDiv.innerHTML = '';
-                    avatarDiv.textContent = 'H';
-                };
-                
-                logoImg.onload = () => {
-                    console.log('✅ Avatar logo loaded successfully:', logoImg.src);
-                };
-                
-                // Set fallback text first, then try to load image
+                // Set fallback first
                 avatarDiv.textContent = 'H';
-                avatarDiv.appendChild(logoImg);
                 
-                // If image loads successfully, it will replace the H
                 logoImg.onload = () => {
-                    console.log('✅ Avatar logo loaded, replacing H');
+                    console.log('✅ Avatar logo loaded successfully, replacing H');
                     avatarDiv.innerHTML = '';
                     avatarDiv.appendChild(logoImg);
                 };
+                
+                logoImg.onerror = () => {
+                    console.error('❌ Avatar logo failed to load from:', logoImg.src);
+                    console.error('Keeping H fallback');
+                    // H is already set, so just keep it
+                };
+                
+                // Add image to DOM to start loading (hidden behind the H text)
+                logoImg.style.position = 'absolute';
+                logoImg.style.top = '0';
+                logoImg.style.left = '0';
+                logoImg.style.zIndex = '-1';
+                avatarDiv.appendChild(logoImg);
+                
+                console.log('🔄 Avatar image added to DOM, loading from:', logoImg.src);
             }
             
             const contentDiv = document.createElement('div');
