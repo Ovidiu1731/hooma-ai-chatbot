@@ -458,8 +458,12 @@ async def embed_demo():
         <script>
             HoomaChatbot.init({{
                 apiEndpoint: window.location.origin,
-                primaryColor: '{config.WIDGET_PRIMARY_COLOR}',
-                position: '{config.WIDGET_POSITION}'
+                primaryColor: '#ff0080',
+                secondaryColor: '#e91e63',
+                position: 'bottom-right',
+                title: 'Hooma AI Assistant',
+                subtitle: 'Online • AI Business Solutions',
+                welcomeMessage: 'Welcome to Hooma! I\'m your AI assistant, ready to help you discover how our AI-powered growth systems can transform your business. What would you like to know?'
             }});
         </script>
     </body>
