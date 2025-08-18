@@ -240,6 +240,10 @@
             this.isOpen = true;
             this.bubble.classList.add('open');
             this.window.classList.add('show');
+            
+            // Hide the bubble when window is open for cleaner look
+            this.bubble.style.display = 'none';
+            
             this.inputField.focus();
             
             // Scroll to bottom
@@ -253,6 +257,9 @@
             this.isOpen = false;
             this.bubble.classList.remove('open');
             this.window.classList.remove('show');
+            
+            // Show the bubble again when window is closed
+            this.bubble.style.display = 'flex';
             
             // Track closing event
             this.trackEvent('chat_closed');
