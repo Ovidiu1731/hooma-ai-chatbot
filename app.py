@@ -404,8 +404,9 @@ async def get_widget_css():
     )
 
 @app.get("/embed/demo.html", response_class=HTMLResponse)
-async def embed_demo():
+async def embed_demo(request: Request):
     """Demo page showing how to embed the widget"""
+    base_url = f"{request.url.scheme}://{request.url.netloc}"
     html_content = f"""
     <!DOCTYPE html>
     <html lang="en">
@@ -431,11 +432,11 @@ async def embed_demo():
             
             <div class="code-block">
 &lt;!-- Hooma AI Chatbot --&gt;<br>
-&lt;link rel="stylesheet" href="{request.url.scheme}://{request.url.netloc}/embed/widget.css"&gt;<br>
-&lt;script src="{request.url.scheme}://{request.url.netloc}/embed/widget.js"&gt;&lt;/script&gt;<br>
+&lt;link rel="stylesheet" href="{base_url}/embed/widget.css"&gt;<br>
+&lt;script src="{base_url}/embed/widget.js"&gt;&lt;/script&gt;<br>
 &lt;script&gt;<br>
 &nbsp;&nbsp;HoomaChatbot.init({{<br>
-&nbsp;&nbsp;&nbsp;&nbsp;apiEndpoint: '{request.url.scheme}://{request.url.netloc}',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;apiEndpoint: '{base_url}',<br>
 &nbsp;&nbsp;&nbsp;&nbsp;primaryColor: '#ff0080',<br>
 &nbsp;&nbsp;&nbsp;&nbsp;secondaryColor: '#e91e63',<br>
 &nbsp;&nbsp;&nbsp;&nbsp;position: 'bottom-right',<br>
