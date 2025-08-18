@@ -46,6 +46,21 @@
     border: none;
     outline: none;
     animation: hooma-pulse-subtle 4s ease-in-out infinite;
+    position: relative;
+}
+
+/* Pink active dot for chat bubble */
+.hooma-chat-bubble::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 12px;
+    height: 12px;
+    background: var(--hooma-pink);
+    border: 2px solid var(--hooma-white);
+    border-radius: 50%;
+    animation: hooma-online-pulse 2s ease-in-out infinite;
 }
 
 .hooma-chat-bubble:hover {
@@ -217,6 +232,12 @@
     animation: hooma-online-pulse 2s ease-in-out infinite;
 }
 
+/* Adjust pink dot position when chat bubble has logo to avoid overlap */
+.hooma-chat-bubble:has(img)::after {
+    top: -2px;
+    right: -2px;
+}
+
 @keyframes hooma-online-pulse {
     0%, 100% { opacity: 1; transform: scale(1); }
     50% { opacity: 0.7; transform: scale(1.1); }
@@ -320,6 +341,14 @@
     font-size: 12px;
     font-weight: 600;
     flex-shrink: 0;
+    overflow: hidden;
+}
+
+.hooma-message-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 .hooma-message.user .hooma-message-avatar {
