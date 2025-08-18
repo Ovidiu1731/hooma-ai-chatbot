@@ -154,8 +154,8 @@
 }
 
 .hooma-chat-window.bottom-right {
-    bottom: 20px;
-    right: 20px;
+    bottom: 10px;
+    right: 10px;
 }
 
 .hooma-chat-window.bottom-left {
@@ -227,15 +227,16 @@
 .hooma-avatar::after {
     content: '';
     position: absolute;
-    top: -4px;
-    right: -8px;
+    top: -6px;
+    right: -12px;
     width: 12px;
     height: 12px;
-    background: var(--hooma-pink);
-    border: 2px solid var(--hooma-white);
+    background: var(--hooma-white);
+    border: 2px solid var(--hooma-pink);
     border-radius: 50%;
     animation: hooma-online-pulse 2s ease-in-out infinite;
     z-index: 10;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* Adjust pink dot position when chat bubble has logo to avoid overlap */
