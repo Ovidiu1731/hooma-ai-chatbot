@@ -386,7 +386,7 @@ async def chat(request: Request, chat_request: ChatRequest, background_tasks: Ba
     )
 
 @app.get("/embed/widget.js")
-async def get_widget_js():
+async def get_widget_js(v: str = None):
     """Serve the widget JavaScript file with cache-busting"""
     return FileResponse(
         path=Path(__file__).parent / "static" / "widget.js",
@@ -394,12 +394,13 @@ async def get_widget_js():
         headers={
             "Cache-Control": "no-cache, no-store, must-revalidate",
             "Pragma": "no-cache",
-            "Expires": "0"
+            "Expires": "0",
+            "ETag": f"hooma-js-{v or 'latest'}"
         }
     )
 
 @app.get("/embed/widget.css")
-async def get_widget_css():
+async def get_widget_css(v: str = None):
     """Serve the widget CSS file with cache-busting"""
     return FileResponse(
         path=Path(__file__).parent / "static" / "widget.css",
@@ -407,7 +408,8 @@ async def get_widget_css():
         headers={
             "Cache-Control": "no-cache, no-store, must-revalidate",
             "Pragma": "no-cache",
-            "Expires": "0"
+            "Expires": "0",
+            "ETag": f"hooma-css-{v or 'latest'}"
         }
     )
 
