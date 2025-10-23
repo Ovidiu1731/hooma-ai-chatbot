@@ -264,17 +264,19 @@ def create_admin_routes(app: FastAPI):
                 </div>
                 
                 <div class="section">
-                    <h2>Widget Embed Code</h2>
-                    <p>Copy this code to your Webflow site:</p>
+                    <h2>Cod widget (embed)</h2>
+                    <p>Copiază acest cod în site-ul tău Webflow:</p>
                     <div class="code">
-&lt;!-- Hooma AI Chatbot --&gt;<br>
+&lt;!-- Asistentul Hooma --&gt;<br>
 &lt;link rel="stylesheet" href="{request.url.scheme}://{request.url.netloc}/embed/widget.css"&gt;<br>
 &lt;script src="{request.url.scheme}://{request.url.netloc}/embed/widget.js"&gt;&lt;/script&gt;<br>
 &lt;script&gt;<br>
 &nbsp;&nbsp;HoomaChatbot.init({{<br>
 &nbsp;&nbsp;&nbsp;&nbsp;apiEndpoint: '{request.url.scheme}://{request.url.netloc}',<br>
 &nbsp;&nbsp;&nbsp;&nbsp;primaryColor: '{config.WIDGET_PRIMARY_COLOR}',<br>
-&nbsp;&nbsp;&nbsp;&nbsp;position: 'bottom-right'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;position: 'bottom-right',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title: 'Asistentul Hooma',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;subtitle: 'Consultanță și automatizări AI'<br>
 &nbsp;&nbsp;}});<br>
 &lt;/script&gt;
                     </div>
