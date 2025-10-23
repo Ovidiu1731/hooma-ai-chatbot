@@ -523,7 +523,7 @@ async def standalone_widget(request: Request):
                     position: 'bottom-right',
                     title: 'Asistentul Hooma',
                     subtitle: 'Consultanță și automatizări AI',
-                    welcomeMessage: 'Salut! Sunt asistentul lui Ovidiu. Te pot ajuta să integrezi AI în afacerea ta educațională.'
+                    welcomeMessage: 'Salut! Te pot ajuta să afli despre soluțiile noastre AI pentru afaceri și sistemele de creștere. Ce ai dori să știi?'
                 }});
                 console.log('✅ Widgetul standalone a fost inițializat cu succes!');
             }} else {{
@@ -605,7 +605,7 @@ async def embed_demo(request: Request):
                         position: 'bottom-right',
                         title: 'Asistentul Hooma',
                         subtitle: 'Consultanță și automatizări AI',
-                        welcomeMessage: 'Salut! Sunt asistentul lui Ovidiu. Te pot ajuta să integrezi AI în afacerea ta educațională.'
+                        welcomeMessage: 'Salut! Te pot ajuta să afli despre soluțiile noastre AI pentru afaceri și sistemele de creștere. Ce ai dori să știi?'
                     }});
                     console.log('Asistentul Hooma a fost inițializat!');
                 }} else {{

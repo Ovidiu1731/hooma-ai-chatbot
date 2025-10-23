@@ -20,7 +20,7 @@
                 primaryColor: '#ff5da2',
                 secondaryColor: '#e91e63',
                 position: 'bottom-right',
-                welcomeMessage: 'Salut! Sunt asistentul lui Ovidiu Dodan. Te pot ajuta să integrezi AI în afacerea ta educațională.',
+                welcomeMessage: 'Salut! Te pot ajuta să afli despre soluțiile noastre AI pentru afaceri și sistemele de creștere. Ce ai dori să știi?',
                 placeholder: 'Scrie mesajul tău...',
                 title: 'Asistentul Hooma',
                 subtitle: 'Consultanță și automatizări AI',
