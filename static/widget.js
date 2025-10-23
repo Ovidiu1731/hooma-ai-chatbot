@@ -20,10 +20,10 @@
                 primaryColor: '#ff5da2',
                 secondaryColor: '#e91e63',
                 position: 'bottom-right',
-                welcomeMessage: "Hi! I'm Hooma's AI assistant. I can help you learn about our AI business solutions and growth systems. What would you like to know?",
-                placeholder: 'Ask about AI solutions...',
-                title: 'Hooma AI Assistant',
-                subtitle: 'AI Business Solutions',
+                welcomeMessage: 'Salut! Sunt asistentul lui Ovidiu Dodan. Te pot ajuta să integrezi AI în afacerea ta educațională.',
+                placeholder: 'Scrie mesajul tău...',
+                title: 'Asistentul Hooma',
+                subtitle: 'Consultanță și automatizări AI',
                 poweredBy: true
             };
             this.isTyping = false;
@@ -88,7 +88,7 @@
         createChatBubble() {
             const bubble = document.createElement('button');
             bubble.className = `hooma-chat-bubble ${this.config.position}`;
-            bubble.setAttribute('aria-label', 'Open chat with Hooma AI Assistant');
+            bubble.setAttribute('aria-label', 'Deschide chatul cu Asistentul Hooma');
             
             // Try to load logo, fallback to SVG icon
             const logoImg = document.createElement('img');
@@ -138,7 +138,7 @@
                             <p>${this.config.subtitle}</p>
                         </div>
                     </div>
-                    <button class="hooma-close-btn" aria-label="Close chat">
+                    <button class="hooma-close-btn" aria-label="Închide chatul">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                             <path d="M12.854 3.146a.5.5 0 0 1 0 .708L8.707 8l4.147 4.146a.5.5 0 0 1-.708.708L8 8.707l-4.146 4.147a.5.5 0 0 1-.708-.708L7.293 8 3.146 3.854a.5.5 0 1 1 .708-.708L8 7.293l4.146-4.147a.5.5 0 0 1 .708 0z"/>
                         </svg>
@@ -161,7 +161,7 @@
                                 aria-label="Type your message"
                             ></textarea>
                         </div>
-                        <button class="hooma-send-btn" aria-label="Send message">
+                        <button class="hooma-send-btn" aria-label="Trimite mesajul">
                             <svg class="hooma-send-icon" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
                             </svg>
@@ -170,7 +170,7 @@
                 </div>
                 ${this.config.poweredBy ? `
                 <div class="hooma-powered-by">
-                    Powered by <a href="https://hooma.io" target="_blank" rel="noopener">Hooma AI</a>
+                    Dezvoltat de <a href="https://hooma.io" target="_blank" rel="noopener">Hooma AI</a>
                 </div>
                 ` : ''}
             `;
@@ -374,7 +374,7 @@
                 
                 // Show error message
                 this.addMessage('assistant', 
-                    "I apologize, but I'm experiencing technical difficulties. Please try again in a moment, or feel free to contact our team directly for immediate assistance."
+                    'Îmi pare rău, întâmpin probleme tehnice. Te rog încearcă din nou în scurt timp sau scrie-ne direct.'
                 );
                 
                 // Track error

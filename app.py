@@ -204,11 +204,11 @@ async def get_ai_response(messages: List[Dict[str, str]]) -> str:
             return response.content[0].text
             
         else:
-            return "I'm sorry, but the AI service is currently unavailable. Please try again later or contact our team directly."
+            return "Îmi pare rău, serviciul AI nu este disponibil momentan. Te rog încearcă mai târziu sau contactează-ne direct."
             
     except Exception as e:
         print(f"AI API Error: {e}")
-        return "I apologize, but I'm experiencing technical difficulties. Please try again in a moment, or feel free to contact our team directly for immediate assistance."
+        return "Îmi pare rău, întâmpin probleme tehnice. Te rog încearcă din nou în scurt timp sau scrie-ne direct."
 
 # API Routes
 @app.get("/", response_class=HTMLResponse)
@@ -216,11 +216,11 @@ async def home():
     """Serve the main chat interface for testing"""
     html_content = """
     <!DOCTYPE html>
-    <html lang="en">
+    <html lang="ro">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Hooma AI Chatbot - Test Interface</title>
+        <title>Asistentul Hooma - Interfață de test</title>
         <style>
             body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 20px; background: #f5f5f5; }
             .container { max-width: 800px; margin: 0 auto; background: white; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); overflow: hidden; }
@@ -239,17 +239,17 @@ async def home():
     <body>
         <div class="container">
             <div class="header">
-                <h1>Hooma AI Chatbot</h1>
-                <p>Test Interface - AI Business Solutions & Growth Systems</p>
+                <h1>Asistentul Hooma</h1>
+                <p>Interfață de test — Consultanță și automatizări AI</p>
             </div>
             <div id="chatArea" class="chat-area">
                 <div class="message assistant">
-                    <strong>Hooma AI:</strong> Hello! I'm here to help you learn about Hooma's AI business solutions and growth systems. How can I assist you today?
+                    <strong>Hooma:</strong> Salut! Sunt asistentul lui Ovidiu. Te pot ajuta cu întrebări despre strategie și automatizări AI pentru afaceri educaționale.
                 </div>
             </div>
             <div class="input-area">
-                <input type="text" id="messageInput" placeholder="Type your message here..." />
-                <button id="sendButton" onclick="sendMessage()">Send</button>
+                <input type="text" id="messageInput" placeholder="Scrie mesajul tău..." />
+                <button id="sendButton" onclick="sendMessage()">Trimite</button>
             </div>
         </div>
 
@@ -267,13 +267,13 @@ async def home():
                 // Add user message to chat
                 const userDiv = document.createElement('div');
                 userDiv.className = 'message user';
-                userDiv.innerHTML = `<strong>You:</strong> ${message}`;
+                userDiv.innerHTML = `<strong>Tu:</strong> ${message}`;
                 chatArea.appendChild(userDiv);
                 
                 // Clear input and disable button
                 input.value = '';
                 button.disabled = true;
-                button.textContent = 'Sending...';
+                button.textContent = 'Se trimite...';
                 
                 try {
                     const response = await fetch('/api/chat', {
@@ -293,19 +293,19 @@ async def home():
                     // Add assistant response to chat
                     const assistantDiv = document.createElement('div');
                     assistantDiv.className = 'message assistant';
-                    assistantDiv.innerHTML = `<strong>Hooma AI:</strong> ${data.response}`;
+                    assistantDiv.innerHTML = `<strong>Hooma:</strong> ${data.response}`;
                     chatArea.appendChild(assistantDiv);
                     
                 } catch (error) {
                     const errorDiv = document.createElement('div');
                     errorDiv.className = 'message assistant';
-                    errorDiv.innerHTML = `<strong>Error:</strong> Failed to send message. Please try again.`;
+                    errorDiv.innerHTML = `<strong>Eroare:</strong> Nu am putut trimite mesajul. Încearcă din nou.`;
                     chatArea.appendChild(errorDiv);
                 }
                 
                 // Re-enable button and scroll to bottom
                 button.disabled = false;
-                button.textContent = 'Send';
+                button.textContent = 'Trimite';
                 chatArea.scrollTop = chatArea.scrollHeight;
             }
             
@@ -429,42 +429,42 @@ async def simple_test():
     <!DOCTYPE html>
     <html>
     <head>
-        <title>Widget Test</title>
+        <title>Test widget</title>
         <style>
             body { font-family: Arial, sans-serif; padding: 20px; background: #f0f0f0; }
             .debug { background: yellow; padding: 10px; margin: 10px 0; border-radius: 4px; }
         </style>
     </head>
     <body>
-        <h1>Hooma Widget Test Page</h1>
+        <h1>Pagină test widget Hooma</h1>
         <div class="debug">
-            <strong>Debug Info:</strong>
-            <div id="debug-info">Loading...</div>
+            <strong>Informații debug:</strong>
+            <div id="debug-info">Se încarcă...</div>
         </div>
         
-        <p>Check the bottom-right corner for the chat widget.</p>
-        <p>Open browser console (F12) to see debug logs.</p>
+        <p>Verifică colțul din dreapta jos pentru widgetul de chat.</p>
+        <p>Deschide consola browserului (F12) pentru jurnalele de debug.</p>
         
         <link rel="stylesheet" href="/embed/widget.css">
         <script src="/embed/widget.js"></script>
         <script>
-            document.getElementById('debug-info').innerHTML = 'Files loaded. Initializing widget...';
+            document.getElementById('debug-info').innerHTML = 'Fișiere încărcate. Inițializez widgetul...';
             
             console.log('=== WIDGET DEBUG START ===');
             console.log('window.HoomaChatbot:', window.HoomaChatbot);
             
             if (window.HoomaChatbot) {
-                console.log('HoomaChatbot found, initializing...');
+                console.log('HoomaChatbot găsit, inițializez...');
                 HoomaChatbot.init({
                     apiEndpoint: window.location.origin,
                     primaryColor: '#ff5da2',
                     secondaryColor: '#e91e63',
                     position: 'bottom-right'
                 });
-                document.getElementById('debug-info').innerHTML = 'Widget initialized!';
+                document.getElementById('debug-info').innerHTML = 'Widget inițializat!';
             } else {
-                console.error('HoomaChatbot not found!');
-                document.getElementById('debug-info').innerHTML = 'ERROR: HoomaChatbot not found!';
+                console.error('HoomaChatbot nu a fost găsit!');
+                document.getElementById('debug-info').innerHTML = 'EROARE: HoomaChatbot nu a fost găsit!';
             }
             
             console.log('=== WIDGET DEBUG END ===');
@@ -487,11 +487,11 @@ async def standalone_widget(request: Request):
     
     html_content = f"""
     <!DOCTYPE html>
-    <html lang="en">
+    <html lang="ro">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Hooma Chatbot - Standalone Test</title>
+        <title>Asistentul Hooma — Test standalone</title>
         <style>
         {css_content}
         body {{ font-family: Arial, sans-serif; margin: 0; padding: 40px; background: #000; color: white; }}
@@ -500,34 +500,34 @@ async def standalone_widget(request: Request):
     </head>
     <body>
         <div class="debug-info">
-            ✅ Standalone Widget Test<br>
-            🎯 CSS & JS loaded inline<br>
+            ✅ Test widget standalone<br>
+            🎯 CSS & JS încărcate inline<br>
             🔗 API: {base_url}
         </div>
         
-        <h1>Hooma AI Chatbot - Standalone Test</h1>
-        <p>This version has all CSS/JS embedded inline to avoid caching issues.</p>
-        <p>Look for the pink chat bubble in the bottom-right corner.</p>
+        <h1>Asistentul Hooma — Test standalone</h1>
+        <p>Această versiune are CSS/JS integrate inline pentru a evita probleme de cache.</p>
+        <p>Caută bula roz din colțul din dreapta jos.</p>
         
         <script>
         {js_content}
         
         // Initialize immediately
         document.addEventListener('DOMContentLoaded', function() {{
-            console.log('🚀 Standalone widget initializing...');
+            console.log('🚀 Inițializez widgetul standalone...');
             if (window.HoomaChatbot) {{
                 HoomaChatbot.init({{
                     apiEndpoint: '{base_url}',
                     primaryColor: '#ff5da2',
                     secondaryColor: '#e91e63',
                     position: 'bottom-right',
-                    title: 'Hooma AI Assistant',
-                    subtitle: 'AI Business Solutions',
-                    welcomeMessage: 'Hi! I can help you learn about our AI business solutions and growth systems. What would you like to know?'
+                    title: 'Asistentul Hooma',
+                    subtitle: 'Consultanță și automatizări AI',
+                    welcomeMessage: 'Salut! Sunt asistentul lui Ovidiu. Te pot ajuta să integrezi AI în afacerea ta educațională.'
                 }});
-                console.log('✅ Standalone widget initialized successfully!');
+                console.log('✅ Widgetul standalone a fost inițializat cu succes!');
             }} else {{
-                console.error('❌ HoomaChatbot not found in standalone mode');
+                console.error('❌ HoomaChatbot nu a fost găsit în modul standalone');
             }}
         }});
         </script>
@@ -542,11 +542,11 @@ async def embed_demo(request: Request):
     base_url = f"{request.url.scheme}://{request.url.netloc}"
     html_content = f"""
     <!DOCTYPE html>
-    <html lang="en">
+    <html lang="ro">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Hooma Chatbot Widget Demo</title>
+        <title>Demo widget Asistentul Hooma</title>
         <style>
             body {{ font-family: Arial, sans-serif; margin: 0; padding: 40px; background: #f8f9fa; }}
             .demo-content {{ max-width: 800px; margin: 0 auto; background: white; padding: 40px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }}
@@ -557,11 +557,11 @@ async def embed_demo(request: Request):
     </head>
     <body>
         <div class="demo-content">
-            <h1>Hooma AI Chatbot Widget Demo</h1>
-            <p>This page demonstrates how the Hooma AI chatbot widget appears on your website.</p>
+            <h1>Demo widget — Asistentul Hooma</h1>
+            <p>Această pagină demonstrează cum apare widgetul Asistentului Hooma pe site‑ul tău.</p>
             
-            <h2>How to Embed</h2>
-            <p>Add this code to your website's HTML (preferably before the closing &lt;/body&gt; tag):</p>
+            <h2>Cum îl integrezi</h2>
+            <p>Adaugă acest cod în HTML (ideal înainte de &lt;/body&gt;):</p>
             
             <div class="code-block">
 &lt;!-- Hooma AI Chatbot --&gt;<br>
@@ -573,22 +573,22 @@ async def embed_demo(request: Request):
 &nbsp;&nbsp;&nbsp;&nbsp;primaryColor: '#ff5da2',<br>
 &nbsp;&nbsp;&nbsp;&nbsp;secondaryColor: '#e91e63',<br>
 &nbsp;&nbsp;&nbsp;&nbsp;position: 'bottom-right',<br>
-&nbsp;&nbsp;&nbsp;&nbsp;title: 'Hooma AI Assistant',<br>
-&nbsp;&nbsp;&nbsp;&nbsp;subtitle: 'AI Business Solutions'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title: 'Asistentul Hooma',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;subtitle: 'Consultanță și automatizări AI'<br>
 &nbsp;&nbsp;}});<br>
 &lt;/script&gt;
             </div>
             
-            <h2>Features</h2>
+            <h2>Funcționalități</h2>
             <ul>
-                <li>Responsive design that works on all devices</li>
-                <li>Customizable colors and positioning</li>
-                <li>Session management for conversation continuity</li>
-                <li>Professional UI matching Hooma's brand</li>
-                <li>AI-powered responses using Hooma's knowledge base</li>
+                <li>Design responsiv pe toate dispozitivele</li>
+                <li>Culori și poziționare personalizabile</li>
+                <li>Gestionarea sesiunii pentru context de conversație</li>
+                <li>UI profesional, aliniat cu brandul Hooma</li>
+                <li>Răspunsuri AI bazate pe baza de cunoștințe Hooma</li>
             </ul>
             
-            <p>Try the chatbot widget in the bottom-right corner of this page!</p>
+            <p>Încearcă widgetul în colțul din dreapta jos al paginii!</p>
         </div>
         
         <link rel="stylesheet" href="/embed/widget.css">
@@ -596,20 +596,20 @@ async def embed_demo(request: Request):
         <script>
             // Wait for DOM to be ready
             document.addEventListener('DOMContentLoaded', function() {{
-                console.log('Initializing Hooma Chatbot...');
+                console.log('Inițializez Asistentul Hooma...');
                 if (window.HoomaChatbot) {{
                     HoomaChatbot.init({{
                         apiEndpoint: window.location.origin,
                         primaryColor: '#ff5da2',
                         secondaryColor: '#e91e63',
                         position: 'bottom-right',
-                        title: 'Hooma AI Assistant',
-                        subtitle: 'AI Business Solutions',
-                        welcomeMessage: 'Hi! I\'m Hooma\'s AI assistant. I can help you learn about our AI business solutions and growth systems. What would you like to know?'
+                        title: 'Asistentul Hooma',
+                        subtitle: 'Consultanță și automatizări AI',
+                        welcomeMessage: 'Salut! Sunt asistentul lui Ovidiu. Te pot ajuta să integrezi AI în afacerea ta educațională.'
                     }});
-                    console.log('Hooma Chatbot initialized successfully!');
+                    console.log('Asistentul Hooma a fost inițializat!');
                 }} else {{
-                    console.error('HoomaChatbot not found. Check if widget.js loaded properly.');
+                    console.error('HoomaChatbot nu a fost găsit. Verifică încărcarea widget.js.');
                 }}
             }});
         </script>

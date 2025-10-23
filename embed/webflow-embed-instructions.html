@@ -109,11 +109,11 @@
             <li>Basic understanding of HTML/CSS (optional but helpful)</li>
         </ul>
 
-        <h2>🎯 Quick Start (Recommended)</h2>
+        <h2>🎯 Start rapid (recomandat)</h2>
         
         <div class="step">
-            <h3>Step 1: Copy the Embed Code</h3>
-            <p>Copy this code and paste it into your Webflow site's custom code section:</p>
+            <h3>Pasul 1: Copiază codul de embed</h3>
+            <p>Copiază acest cod și lipește-l în secțiunea de cod personalizat din Webflow:</p>
         </div>
 
         <div class="code-block">
@@ -134,18 +134,18 @@
         </div>
 
         <div class="warning">
-            <strong>⚠️ Important:</strong> Replace <code>YOUR-RAILWAY-DOMAIN</code> with your actual Railway deployment URL!
+            <strong>⚠️ Important:</strong> Înlocuiește <code>YOUR-RAILWAY-DOMAIN</code> cu URL-ul aplicației tale Railway!
         </div>
 
         <div class="step">
-            <h3>Step 2: Add to Webflow</h3>
+            <h3>Pasul 2: Adaugă în Webflow</h3>
             <ol>
-                <li>Log into your Webflow Designer</li>
-                <li>Go to Project Settings (gear icon)</li>
-                <li>Navigate to the "Custom Code" tab</li>
-                <li>Paste the embed code in the "Footer Code" section</li>
-                <li>Click "Save Changes"</li>
-                <li>Publish your site</li>
+                <li>Autentifică-te în Webflow Designer</li>
+                <li>Mergi la Project Settings (pictograma rotiță)</li>
+                <li>Deschide fila "Custom Code"</li>
+                <li>Lipește codul în secțiunea "Footer Code"</li>
+                <li>Apasă „Save Changes”</li>
+                <li>Publică site-ul</li>
             </ol>
         </div>
 
@@ -153,15 +153,15 @@
             <strong>🎉 That's it!</strong> Your Hooma AI Chatbot should now appear on your website.
         </div>
 
-        <h2>⚙️ Customization Options</h2>
+        <h2>⚙️ Opțiuni de personalizare</h2>
         
         <table class="config-table">
             <thead>
                 <tr>
-                    <th>Option</th>
-                    <th>Type</th>
-                    <th>Default</th>
-                    <th>Description</th>
+                    <th>Opțiune</th>
+                    <th>Tip</th>
+                    <th>Implicit</th>
+                    <th>Descriere</th>
                 </tr>
             </thead>
             <tbody>
@@ -169,19 +169,19 @@
                     <td><code>apiEndpoint</code></td>
                     <td>String</td>
                     <td>Required</td>
-                    <td>Your Railway deployment URL</td>
+                    <td>URL-ul implementării tale Railway</td>
                 </tr>
                 <tr>
                     <td><code>primaryColor</code></td>
                     <td>String</td>
                     <td>#2563eb</td>
-                    <td>Main brand color (hex code)</td>
+                    <td>Culoarea principală de brand (hex)</td>
                 </tr>
                 <tr>
                     <td><code>secondaryColor</code></td>
                     <td>String</td>
                     <td>#1d4ed8</td>
-                    <td>Secondary brand color (hex code)</td>
+                    <td>Culoarea secundară (hex)</td>
                 </tr>
                 <tr>
                     <td><code>position</code></td>
@@ -193,13 +193,13 @@
                     <td><code>title</code></td>
                     <td>String</td>
                     <td>Hooma AI Assistant</td>
-                    <td>Chat window title</td>
+                    <td>Titlul ferestrei de chat</td>
                 </tr>
                 <tr>
                     <td><code>subtitle</code></td>
                     <td>String</td>
                     <td>AI Business Solutions</td>
-                    <td>Chat window subtitle</td>
+                    <td>Subtitlu pentru fereastra de chat</td>
                 </tr>
                 <tr>
                     <td><code>welcomeMessage</code></td>
@@ -216,7 +216,7 @@
             </tbody>
         </table>
 
-        <h2>🎨 Custom Branding Example</h2>
+        <h2>🎨 Exemplu de branding personalizat</h2>
         
         <div class="code-block">
             <button class="copy-btn" onclick="copyToClipboard('custom-code')">Copy</button>
@@ -226,21 +226,21 @@
 <script>
   HoomaChatbot.init({
     apiEndpoint: 'https://YOUR-RAILWAY-DOMAIN.railway.app',
-    primaryColor: '#0066cc',        // Your brand blue
-    secondaryColor: '#004499',      // Darker shade
-    position: 'bottom-left',        // Different position
-    title: 'Hooma Business AI',     // Custom title
-    subtitle: 'Growth Accelerator', // Custom subtitle
-    welcomeMessage: 'Ready to accelerate your business growth with AI? Let me show you how Hooma can help transform your operations!',
-    placeholder: 'Ask about AI solutions...'
+    primaryColor: '#0066cc',        // albastrul brandului tău
+    secondaryColor: '#004499',      // nuanță mai închisă
+    position: 'bottom-left',        // poziție diferită
+    title: 'Asistentul Hooma',      // titlu personalizat
+    subtitle: 'Consultanță și automatizări AI',
+    welcomeMessage: 'Salut! Te ajut să integrezi AI în afacerea ta educațională — rapid și eficient.',
+    placeholder: 'Scrie mesajul tău...'
   });
 </script></div>
         </div>
 
-        <h2>📱 Advanced Integration Options</h2>
+        <h2>📱 Opțiuni avansate de integrare</h2>
 
-        <h3>Option 1: Data Attributes (Simple)</h3>
-        <p>For basic customization, you can use data attributes:</p>
+        <h3>Opțiunea 1: Atribute data (simplu)</h3>
+        <p>Pentru personalizare de bază, poți folosi atribute data:</p>
         
         <div class="code-block">
             <button class="copy-btn" onclick="copyToClipboard('data-attrs')">Copy</button>
@@ -254,8 +254,8 @@
 </script></div>
         </div>
 
-        <h3>Option 2: Conditional Loading</h3>
-        <p>Load the chatbot only on specific pages:</p>
+        <h3>Opțiunea 2: Încărcare condițională</h3>
+        <p>Încarcă chatbotul doar pe anumite pagini:</p>
         
         <div class="code-block">
             <button class="copy-btn" onclick="copyToClipboard('conditional')">Copy</button>
@@ -263,7 +263,7 @@
 <link rel="stylesheet" href="https://YOUR-RAILWAY-DOMAIN.railway.app/embed/widget.css">
 <script src="https://YOUR-RAILWAY-DOMAIN.railway.app/embed/widget.js"></script>
 <script>
-  // Only load on specific pages
+  // Încarcă doar pe anumite pagini
   if (window.location.pathname === '/' || 
       window.location.pathname.includes('/services/') ||
       window.location.pathname.includes('/contact/')) {
@@ -277,8 +277,8 @@
 </script></div>
         </div>
 
-        <h3>Option 3: Business Hours Integration</h3>
-        <p>Show different messages based on business hours:</p>
+        <h3>Opțiunea 3: Integrare cu programul de lucru</h3>
+        <p>Afișează mesaje diferite în funcție de program:</p>
         
         <div class="code-block">
             <button class="copy-btn" onclick="copyToClipboard('business-hours')">Copy</button>
@@ -286,36 +286,36 @@
 <link rel="stylesheet" href="https://YOUR-RAILWAY-DOMAIN.railway.app/embed/widget.css">
 <script src="https://YOUR-RAILWAY-DOMAIN.railway.app/embed/widget.js"></script>
 <script>
-  // Check business hours (adjust timezone as needed)
+  // Verifică programul (ajustează fusul orar dacă e nevoie)
   const now = new Date();
   const hour = now.getHours();
-  const isBusinessHours = hour >= 9 && hour < 18; // 9 AM to 6 PM
+  const isBusinessHours = hour >= 9 && hour < 18; // 9:00–18:00
   
   const welcomeMessage = isBusinessHours 
-    ? "Hello! Our team is online and ready to help you with AI business solutions. How can we assist you today?"
-    : "Hello! While our team is currently offline, I'm here 24/7 to help answer your questions about Hooma's AI business solutions. How can I assist you?";
+    ? "Salut! Sunt online și te pot ajuta cu integrarea AI. Cu ce începem?"
+    : "Salut! Sunt aici 24/7. Spune-mi pe scurt despre afacerea ta și te ghidez.";
     
   HoomaChatbot.init({
     apiEndpoint: 'https://YOUR-RAILWAY-DOMAIN.railway.app',
-    primaryColor: '#2563eb',
+    primaryColor: '#ff5da2',
     position: 'bottom-right',
     welcomeMessage: welcomeMessage,
-    subtitle: isBusinessHours ? 'Team Online' : 'AI Assistant'
+    subtitle: isBusinessHours ? 'Disponibil acum' : 'Asistent AI'
   });
 </script></div>
         </div>
 
-        <h2>🔧 Troubleshooting</h2>
+        <h2>🔧 Depanare</h2>
 
         <h3>Common Issues</h3>
         <ul>
-            <li><strong>Chatbot not appearing:</strong> Check that you've replaced the Railway domain and published your site</li>
-            <li><strong>CORS errors:</strong> Ensure your domain is added to the ALLOWED_ORIGINS environment variable</li>
-            <li><strong>Styling conflicts:</strong> The widget uses isolated CSS, but check for z-index conflicts</li>
-            <li><strong>Mobile responsiveness:</strong> The widget automatically adapts to mobile screens</li>
+            <li><strong>Chatbotul nu apare:</strong> Verifică domeniul Railway și publicarea site-ului</li>
+            <li><strong>Erori CORS:</strong> Adaugă domeniul tău la ALLOWED_ORIGINS</li>
+            <li><strong>Conflicte de stil:</strong> CSS-ul e izolat, dar verifică z-index</li>
+            <li><strong>Mobil:</strong> Widgetul se adaptează automat</li>
         </ul>
 
-        <h3>Testing Checklist</h3>
+        <h3>Checklist de test</h3>
         <div class="step">
             <ul>
                 <li>✅ Chatbot bubble appears in the correct position</li>
