@@ -43,6 +43,9 @@
             this.config = { ...this.config, ...options };
             this.apiEndpoint = options.apiEndpoint || '';
 
+            // Normalize any known English values to Romanian equivalents
+            this.normalizeLanguage();
+
             console.log('Final config:', this.config);
             console.log('API Endpoint:', this.apiEndpoint);
 
@@ -61,6 +64,26 @@
             }
 
             this.isInitialized = true;
+        }
+
+        normalizeLanguage() {
+            // Ensure Romanian UI text even if embed overrides with known English defaults
+            const englishTitleRegex = /Hooma\s*(AI|N)?\s*Assistant/i;
+            if (!this.config.title || englishTitleRegex.test(this.config.title)) {
+                this.config.title = 'Asistentul Hooma';
+            }
+
+            if (this.config.subtitle && /AI Business Solutions/i.test(this.config.subtitle)) {
+                this.config.subtitle = 'Consultanță și automatizări AI';
+            }
+
+            if (this.config.welcomeMessage && /AI business solutions/i.test(this.config.welcomeMessage)) {
+                this.config.welcomeMessage = 'Salut! Te pot ajuta să afli despre soluțiile noastre AI pentru afaceri și sistemele de creștere. Ce ai dori să știi?';
+            }
+
+            if (this.config.placeholder && /Type your message/i.test(this.config.placeholder)) {
+                this.config.placeholder = 'Scrie mesajul tău...';
+            }
         }
 
         createWidget() {
@@ -158,7 +181,7 @@
                                 placeholder="${this.config.placeholder}"
                                 rows="1"
                                 maxlength="2000"
-                                aria-label="Type your message"
+                                aria-label="Scrie mesajul tău"
                             ></textarea>
                         </div>
                         <button class="hooma-send-btn" aria-label="Trimite mesajul">
