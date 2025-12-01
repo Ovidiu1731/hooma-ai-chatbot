@@ -132,7 +132,7 @@ HoomaChatbot.init({
 **Need help?**
 - Run the test script: `python test_deployment.py`
 - Check the admin dashboard for diagnostics
-- Email: hello@hooma.io
+- Email: contact@hooma.ro
 
 ## 🎯 Next Steps
 

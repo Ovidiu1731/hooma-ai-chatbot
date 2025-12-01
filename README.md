@@ -299,7 +299,7 @@ This project is proprietary software for Hooma AI business use.
 
 ## 📞 Support
 
-- **Email:** hello@hooma.io
+- **Email:** contact@hooma.ro
 - **Website:** [hooma.io](https://hooma.io)
 - **Documentation:** See `DEPLOYMENT_GUIDE.md` for detailed setup instructions
 

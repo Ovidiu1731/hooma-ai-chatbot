@@ -69,7 +69,7 @@ This guide will help you deploy your Hooma AI Chatbot to Railway for 24/7 operat
    RATE_LIMIT_REQUESTS_PER_HOUR=500
 
    # Business Configuration
-   CONTACT_EMAIL=hello@hooma.io
+   CONTACT_EMAIL=contact@hooma.ro
    WEBSITE_URL=https://hooma.io
 
    # Widget Customization
@@ -240,7 +240,7 @@ If you encounter issues:
    - OpenAI/Anthropic API docs
 
 3. **Professional Support:**
-   - Contact Hooma team: hello@hooma.io
+   - Contact Hooma team: contact@hooma.ro
    - Book a technical consultation
 
 ## 🎯 Success Checklist

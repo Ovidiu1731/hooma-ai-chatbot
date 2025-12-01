@@ -49,7 +49,7 @@ class Config:
     ALLOWED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "*").split(",")
     
     # Business settings
-    CONTACT_EMAIL = os.getenv("CONTACT_EMAIL", "contact@hooma.io")
+    CONTACT_EMAIL = os.getenv("CONTACT_EMAIL", "contact@hooma.ro")
     WEBSITE_URL = os.getenv("WEBSITE_URL", "https://hooma.io")
     
     # Widget customization
